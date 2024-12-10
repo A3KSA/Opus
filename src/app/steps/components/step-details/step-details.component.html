@@ -1,0 +1,114 @@
+<div class="wrapper" *ngIf="selectedStep">
+  <div class="entete">
+    <div class="titre">
+      <div class="firstRow">
+        <div class="id">{{selectedStep.npa}}</div>
+        <div class="lieu">{{selectedStep.localite}}</div>
+      </div>
+      <div class="step">{{selectedStep.titre}}</div>
+      <div class="lieu">{{selectedStep.rue}}</div>
+    </div>
+    <div class="actionsBtns">
+      <button class="actions2" (click)="goBackToColumn()"><i class='bx bx-arrow-back bx-tada'></i></button>
+      <button class="actions" (click)="openModalUpdateInfosStep();$event.stopPropagation()"> <i
+          class='bx bx-edit'></i></button>
+    </div>
+  </div>
+  <div class="contenu">
+    <input type="radio" name="slider" checked id="home">
+    <input type="radio" name="slider" id="blog">
+    <input type="radio" name="slider" id="code">
+    <input type="radio" name="slider" id="help">
+    <input type="radio" name="slider" id="about">
+    <nav>
+      <label for="home" class="home"><i class='bx bx-home'></i>Infos</label>
+      <label for="blog" class="blog"><i class='bx bx-current-location'></i>Localisation</label>
+      <label for="code" class="code"><i class='bx bx-calendar-exclamation'></i>Interventions</label>
+      <label for="help" class="help"><i class='bx bx-list-check'></i>Projets</label>
+      <label for="about" class="about"><i class='bx bxs-file-doc'></i>Documents</label>
+      <div class="slider"></div>
+    </nav>
+    <section>
+      <div class="content content-1">
+        <div class="title">
+          <div>Informations sur site</div>
+          <button *ngIf="selectedStep.exploitant.length < 3" class="params" style="margin-right: 20px;"
+            (click)="openModalAddExploitant();$event.stopPropagation()">Nouveau contact <i class='bx bx-list-plus'></i></button>
+        </div>
+        <div class="listCard">
+          <div class="cardNew" *ngFor="let exploitant of selectedStep.exploitant">
+            <div class="image">
+              <img src="../../../../assets/img/construction-worker.png" alt="">
+            </div>
+            <div class="texte">
+              <div class="exploitantText">{{exploitant.prenom}} {{exploitant.nom}}</div>
+              <div class="infos">
+                <div class="emailText">{{exploitant.email}}</div>
+                <div class="emailText">{{exploitant.telephone}}</div>
+              </div>
+            </div>
+            <div class="actionsExploitant">
+              <button class="actions" (click)="openModalUpdateExistingExploitant(exploitant);$event.stopPropagation()">
+                <i class='bx bx-edit'></i></button>
+              <button class="error" (click)="deleteExistingExploitant();$event.stopPropagation()"> <i
+                  class='bx bx-x'></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="title">
+          <div>Remarques</div>
+          <button class="params" style="margin-right: 20px;" (click)="openModalNewNote()">Nouvelle note <i
+              class='bx bx-note'></i></button>
+        </div>
+        <div class="tri">
+          <div class="triTexte">
+            <input class="triDate" type="date" id="startDate" [(ngModel)]="startDate"
+              (change)="onCategrorieValueChange()">
+            <input class="triDate" type="date" id="endDate" [(ngModel)]="endDate" (change)="onCategrorieValueChange()">
+            <input class="triSelect" type="text" placeholder="Texte" [(ngModel)]="texteSearch"
+              (input)="onCategrorieValueChange()">
+            <button class="Btn" (click)="resetFilters()">
+              <div class="sign">
+                <svg viewBox="0 0 16 16" class="bi bi-trash3-fill" fill="currentColor" height="18" width="18"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5">
+                  </path>
+                </svg>
+              </div>
+              <div class="text">Delete</div>
+            </button>
+          </div>
+        </div>
+        <div class="listCardBlog2" *ngIf=" notes.length === 0">
+          <div>Aucune remarque n'a été faites pour l'instant.</div>
+        </div>
+        <div class="listCardBlog">
+          <app-note-item *ngFor="let note of notes" [note]="note"></app-note-item>
+        </div>
+      </div>
+      <div class="content content-2">
+        <div class="title">Localisation précise de la STEP</div>
+        <app-map-section [latitude]="selectedStep.lat" [longitude]="selectedStep.long"></app-map-section>
+      </div>
+      <div class="content content-3">
+        <div class="title">Liste des interventions
+          <div class="comm">(Par défaut, filtré sur le mois courant)</div>
+        </div>
+        <app-interventions-section [selectedStep]="selectedStep"></app-interventions-section>
+      </div>
+      <div class="content content-4">
+        <div class="title">Liste des projets en cours</div>
+        <app-projets-section [selectedStep]="selectedStep"></app-projets-section>
+      </div>
+      <div class="content content-5">
+        <div class="title">
+          <div>Liens vers documents utiles</div>
+          <button class="params" style="margin-right: 20px;" (click)="openModalNewDocument()"> Nouveau lien <i
+              class='bx bx-note'></i></button>
+        </div>
+        <app-documents-section [selectedStep]="selectedStep"></app-documents-section>
+      </div>
+    </section>
+  </div>
+</div>

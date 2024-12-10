@@ -1,0 +1,160 @@
+<div class="sidebar" [ngClass]="{'close': !menuActive, 'active': menuActive}">
+  <div class="logo-details">
+    <!--<i class='bx bxl-c-plus-plus icon'></i>-->
+    <img src="../../assets/img/A3K_logo.png" class="icon"/>
+      <!--<div class="logo_name">CodingLab</div>-->
+      <i class='bx bx-menu' (click)="closeMenu()" id="btn" ></i>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
+        <i class='bx bx-grid-alt'></i>
+        <span class="link_name">Accueil</span>
+      </a>
+      <!--<ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Accueil</a></li>
+      </ul>-->
+    </li>
+    <li>
+      <a routerLink="steps" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
+        <i class='bx bx-water'></i>
+        <span class="link_name">Steps</span>
+      </a>
+      <!--<ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Steps</a></li>
+      </ul>-->
+    </li>
+    <li>
+      <a routerLink="projets" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
+        <i class='bx bx-task' ></i>
+        <span class="link_name">Cahier de projets</span>
+      </a>
+      <!--<ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Cahier de projets</a></li>
+      </ul>-->
+    </li>
+    <li>
+      <a routerLink="stock" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class='bx bxs-package'></i>
+        <span class="link_name">Gestion stock</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Gestion stock</a></li>
+      </ul>
+    </li>
+    <li>
+      <a routerLink="wiki" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
+        <i class='bx bxs-book-bookmark' ></i>
+        <span class="link_name">Wiki3000</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Wiki3000</a></li>
+      </ul>
+    </li>
+    <li>
+      <a routerLink="projets" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class='bx bxs-time-five' ></i>
+        <span class="link_name">Gestion heures</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Gestion heures</a></li>
+      </ul>
+    </li>
+    <li>
+      <a routerLink="eplan" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class='bx bx-map-alt' ></i>
+        <span class="link_name">Eplan</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Eplan</a></li>
+      </ul>
+    </li>
+    <!--<li>
+      <div class="iocn-link">
+        <a href="#">
+          <i class='bx bx-book-alt'></i>
+          <span class="link_name">Posts</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow'></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a class="link_name" href="#">Posts</a></li>
+        <li><a href="#">Web Design</a></li>
+        <li><a href="#">Login Form</a></li>
+        <li><a href="#">Card Design</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-pie-chart-alt-2'></i>
+        <span class="link_name">Analytics</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Analytics</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-line-chart'></i>
+        <span class="link_name">Chart</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Chart</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <a href="#">
+          <i class='bx bx-plug'></i>
+          <span class="link_name">Plugins</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow'></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a class="link_name" href="#">Plugins</a></li>
+        <li><a href="#">UI Face</a></li>
+        <li><a href="#">Pigments</a></li>
+        <li><a href="#">Box Icons</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-compass'></i>
+        <span class="link_name">Explore</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Explore</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-history'></i>
+        <span class="link_name">History</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">History</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">
+        <i class='bx bx-cog'></i>
+        <span class="link_name">Setting</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Setting</a></li>
+      </ul>
+    </li>-->
+    <li>
+      <div class="profile-details">
+        <div class="profile-content">
+          <img src="../../../../../assets/img/users.png" alt="profileImg">
+        </div>
+        <div class="name-job">
+          <div class="profile_name">A3K</div>
+          <div class="job">User interne</div>
+        </div>
+        <i class='bx bx-log-out'></i>
+      </div>
+    </li>
+  </ul>
+</div>

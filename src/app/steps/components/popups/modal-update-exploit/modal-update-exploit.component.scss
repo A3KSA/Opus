@@ -1,0 +1,135 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 500px;
+    padding-bottom: 20px;
+    background-color: #f7f7f7;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.header .titre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.content {
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+button {
+    font-size: 17px;
+    padding: 0.5em 2em;
+    border: 2px solid white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.params {
+    background-color: #103992;
+}
+
+.params:hover {
+    background: linear-gradient(90deg, #103992 0%, #4096ff 100%);
+}
+
+.params2 {
+    font-size: 17px;
+    padding: 0.5em 2em;
+    border: 2px solid white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #ffa600;
+    margin-top: 5px;
+}
+
+.params2:hover {
+    background: linear-gradient(90deg, #ffa600 0%, #ffc861 100%);
+}
+
+.localite {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.input {
+    border: 2px solid transparent;
+    width: 89%;
+    padding-left: 0.8em;
+    outline: none;
+    overflow: hidden;
+    background-color: #ffffff;
+    border-radius: 6px;
+    transition: all 0.5s;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.input:hover,
+.input:focus {
+    border: 2px solid #4A9DEC;
+    box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
+    background-color: white;
+}
+
+.file-input {
+    display: none; /* Masquer l'input de type file */
+  }
+
+.Image {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .file-name {
+    font-size: 12px; /* Taille de la police pour le nom du fichier */
+    width: 150px; /* Largeur fixe pour éviter le décalage */
+    white-space: nowrap; /* Empêcher le texte de passer à la ligne suivante */
+    overflow: hidden; /* Masquer le débordement de texte */
+    text-overflow: ellipsis; /* Ajouter des points de suspension si le texte déborde */
+  }
+
+  .error-message {
+    color: #aa0000;
+    font-weight: 400;
+  }
+  

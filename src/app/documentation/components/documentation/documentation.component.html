@@ -1,0 +1,103 @@
+    <div class="one-content-column-version">
+        <div class="left-menu">
+            <div class="content-logo">
+                <div class="logo">
+                    <span>Documentation</span>
+                </div>
+            </div>
+            <div class="content-menu">
+                <div class="content-infos">
+                    <div class="info"><b>Version:</b> 1.0.0</div>
+                    <div class="info"><b>Mise à jour:</b> 22 mai 2023</div>
+                </div>
+                <ul>
+                    <li class="scroll-to-link active" data-target="content-intro">
+                        <a>Introduction</a>
+                    </li>
+                    <li class="scroll-to-link" data-target="content-plan">
+                        <a>Plan du bâtiment</a>
+                    </li>
+                    <li class="scroll-to-link" data-target="content-stores">
+                        <a>Gestion des stores</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-page">
+                <div class="overflow-hidden content-section" id="content-intro">
+                    <h1>Introduction</h1>
+                    <p>
+                        Voici la documentation sur l'utilisation de la supervision pour la gestion des stores de Beauregard. Tout ce qu'il y a à savoir est décrit
+                        dans cette dernière. S'il devait manquer une information, vous pouvez joindre les personnes suivantes:
+                    </p>
+                    <br>
+                    <h4>PERSONNES DE CONTACT</h4>
+                    <table>
+                        <thead>
+                            <th>Personne</th>
+                            <th>Entreprise</th>
+                            <th>Numéro de tél.</th>
+                            <th>Fonction</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Zacharie Monnet</td>
+                                <td>Automation 3000</td>
+                                <td>026 469 72 81</td>
+                                <td>Spécialiste KNX + gestion bâtiment</td>
+                            </tr>
+                            <tr>
+                                <td>Romain Chassot</td>
+                                <td>Automation 3000</td>
+                                <td>026 469 72 88</td>
+                                <td>Développeur supervision</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <h4>DESCRIPTION</h4>
+                    <p>
+                        La supervision est disponible à l'adresse <code class="higlighted break-word">http://localhost:4200</code> 
+                        pour autant que vous soyez connecté sur le réseau local du bâtiment. Elle est accessible depuis depuis n'importe quel appareil (PC, tablette, mobile) car 
+                        c'est une <b>supervision WEB</b>.
+                    </p>
+                    <p>
+                        Bien entendu, il faut que la machine hébergant la supervision soit enclenchée pour que cela fonctionne.
+                    </p>
+                    <p>
+                        L'avantage de ceci est que les expoitants peuvent recevoir et envoyer des commandes <b>directement depuis leur téléphone</b>. Cela évite aux exploitants
+                        de devoir se déplacer à chaque fois à l'endroit où est installé le PC principal.
+                    </p>
+                </div>
+                <div class="overflow-hidden content-section" id="content-plan">
+                    <h1>Plan du bâtiment</h1>
+                    <p>
+                        Ce plan permet de comprendre la logique utilisée pour les façades des stores. Le voici :
+                    </p>
+                    <img src="../../../../assets/img/plan.png" alt="Image" class="resized-image">
+                    <br>
+                </div>
+                <div class="overflow-hidden content-section" id="content-stores">
+                    <h1>Gestion des stores</h1>
+                    <p>
+                        Chaque façade (ou groupe) est pilotable via cette interface : 
+                    </p>
+                    <img src="../../../../assets/img/store.png" alt="Image" class="resized-image">
+                    <br>
+                    <p>
+                        Le bouton <b><span style="color:rgb(49, 127, 179);">bleu</span></b> permet de gérer l'inclinaison des stores. Il est possible de modifier 
+                        cette valeur entre 0 et 100 (0 le store étant complètement ouvert).
+                    </p>
+                    <p>
+                        Le bouton <b><span style="color:rgb(252, 160, 74);">orange</span></b> permet de gérer l'ouverture des stores. Il est possible de modifier 
+                        cette valeur entre 0 et 100 (0 le store étant complètement monté).
+                    </p>
+                    <p>
+                        Le bouton "toggle" <b><span style="color:rgb(95, 49, 179);">violet</span></b> permet de gérer si les stores sont pilotés manuellement (par l'exploitant) 
+                        ou alors s'ils sont gérés automatiquement (par l'automate et la gestion météo). Dans le cas ou les stores sont gérés automatiquement, il n'est plus possible de modifier les valeurs
+                        d'inclinaison et d'ouverture. 
+                    </p>
+                    <br>
+                </div>
+            </div>
+        </div>

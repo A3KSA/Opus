@@ -1,0 +1,28 @@
+body {
+  background-color: #ecf9ff;
+  color: #272727;
+  font-family: 'Lato', serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+html, body { height: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue";}
+h1{
+  color: #272727;
+  font-family: 'Calibri', sans-serif;
+}
+h2{
+  color: #272727;
+  font-family: 'Calibri', sans-serif;
+  
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* styles.css ou error.service.css */
+.custom-snackbar {
+  background-color: #f44336; /* Couleur de fond rouge */
+  color: #fff; /* Couleur du texte blanc */
+  font-size: 16px; /* Taille du texte */
+}

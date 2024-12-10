@@ -1,0 +1,248 @@
+.container {
+  padding-left: 78px;
+  height: 100vh;
+  background-image: url(../../../../assets/img/fond2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  //raccourci pour flex-wrap et flex-direction
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  gap: 10px 20px;
+  overflow: hidden;
+}
+
+.positioned-container {
+  position: relative;
+}
+
+.wrapper {
+  width: 90%;
+  background: #ffffff00;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  height: 90%;
+  overflow: hidden; /* Cache tout le contenu qui dépasse */
+}
+
+.listApplications {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin: 0px 15px 0px 15px;
+  overflow-y: auto; /* Permet le défilement vertical */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.listApplications::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.listApplications a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 45px;
+  letter-spacing: 0px;
+  word-spacing: 1px;
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-variant: normal;
+  text-transform: uppercase;
+}
+
+p {
+  color: #ffffff;
+}
+
+form input {
+  width: 85%;
+  outline: none;
+  border: none;
+  background: #dfe9f5;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.resized-image {
+  max-width: 400px;
+  max-height: 100%;
+}
+
+.horloge-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 10px 10px;
+  padding-bottom: 10px;
+}
+
+label {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+
+.card, .cardSoon {
+  width: 100px;
+  height: 144px;
+  border-radius: 20px;
+  background: #f5f5f53f;
+  position: relative;
+  padding: 1.8rem;
+  border: 2px solid #c3c6ce;
+  transition: 0.5s ease-out;
+  overflow: visible;
+  margin-bottom: 20px;
+}
+
+
+.card-details {
+  color: black;
+  height: 100%;
+  gap: .5em;
+  display: grid;
+  place-content: center;
+}
+
+.card-button {
+  transform: translate(-50%, 125%);
+  width: 60%;
+  border-radius: 1rem;
+  border: none;
+  background-color: #008bf8;
+  color: #fff;
+  font-size: 1rem;
+  padding: .5rem 1rem;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.3s ease-out;
+}
+
+.card-button-soon {
+  transform: translate(-50%, 125%);
+  width: 60%;
+  border-radius: 1rem;
+  border: none;
+  background-color: #636363;
+  color: #fff;
+  font-size: 1rem;
+  padding: .5rem 1rem;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.3s ease-out;
+}
+
+.text-body {
+  color: rgb(134, 134, 134);
+}
+
+/*Text*/
+.text-title {
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+/*Text*/
+.text-title-2 {
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #ffffff2c;
+}
+
+.cardSoon:hover {
+  border-color: #636363;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+.cardSoon:hover .card-button-soon {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+}
+
+
+/*Hover*/
+.card:hover {
+  border-color: #008bf8;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+.card:hover .card-button {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+}
+
+.footer {
+  color: #ffffff;
+  font-size: 12px;
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 1170px) {
+  .container {
+    padding-left: 0px;
+  }
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 470px) {
+  .resized-image {
+    max-width: 350px;
+    max-height: 100%;
+  }
+  .footer {
+    font-size: 10px;
+  }
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 400px) {
+  .resized-image {
+    max-width: 300px;
+  }
+  .listApplications {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto; /* Permet le défilement vertical */
+    padding-top: 0px;
+  }
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 739px) {
+  .listApplications {
+    gap: 20px;
+
+  }
+
+  .card {
+    width: 50px;
+    height: 72px;
+  }
+  .text-title {
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+
+}

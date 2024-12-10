@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="header">
+      <div class="titre">
+        <div class="projet">Édition projet {{ projet.numero }}</div>
+      </div>
+    </div>
+    <div class="listentetes" #myForm>
+      <!-- Votre code HTML actuel pour les champs -->
+      <div class="titres">
+        <div>Titre du projet</div>
+        <div>Localité</div>
+      </div>
+      <div class="forms">
+        <div class="form">
+          <span class="input-border"></span>
+          <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        </div>
+        <div class="form">
+          <input class="input" type="input" name="titre" [(ngModel)]="projet.projet">
+          <span class="input-border"></span>
+        </div>
+        <div class="form">
+          <input class="input" type="input" name="localite" [(ngModel)]="projet.localite">
+          <span class="input-border"></span>
+        </div>
+      </div>
+    </div>
+    <div class="descriptif">
+      <div>Descriptif</div>
+      <textarea class="input2" type="input" name="inputDescriptif" [(ngModel)]="projet.description"></textarea>
+    </div>
+    <div class="Image">
+      <div>Image de fond</div>
+      <input type="file" (change)="onFileSelected($event)">
+  </div>
+    <div class="actionRapports">
+      <button class="params" (click)="onSubmit()"> Sauvegarder <i class='bx bx-save'></i></button>
+    </div>
+  </div>
+  

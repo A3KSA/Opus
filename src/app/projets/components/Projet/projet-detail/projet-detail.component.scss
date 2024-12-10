@@ -1,0 +1,345 @@
+.container {
+  position: relative;
+  /* Ajoutez une position relative pour créer un contexte de positionnement relatif */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  gap: 10px 30px;
+  margin-left: 78px;
+  background-color: #D2E8E3;
+  overflow: hidden;
+  /* Masque tout contenu qui dépasse de la .container */
+}
+
+.container .entete {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  background-color: #f7f7f7;
+}
+
+.entete .titre {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.titre .id {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.titre .projet {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.actionsBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.entete .actionRapports {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.entete .actionLignes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.container .listOuvrages {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: calc(100% - 10% - 5px);
+  /* Taille totale de la page moins la taille de .filtres */
+  overflow-y: auto;
+  /* Activer le défilement vertical si nécessaire */
+  padding-top: 15px;
+  padding-bottom: 120px;
+}
+
+.listOuvrages::-webkit-scrollbar {
+  width: 0;  /* Cela cache la barre de défilement sur les navigateurs WebKit (comme Chrome et Safari) */
+}
+
+.listOuvrages::-webkit-scrollbar-thumb {
+  background-color: transparent;  /* Couleur de fond de la poignée de défilement */
+}
+
+app-ligne-item {
+  width: 90%;
+}
+
+.container .filtres {
+  position: absolute;
+  bottom: 0;
+  /* Place la div en bas de la page */
+  display: flex;
+  flex-direction: column;
+  //justify-content: center;
+  //align-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 6%;
+  width: 99%;
+  background-color: #011F26;
+  border: 2.5px solid white;
+  border-radius: 10px 10px 0 0;
+  transition: height 0.5s;
+}
+
+.filtres .btnFiltre {
+  position: absolute;
+  /* Utilisez une position absolue pour le bouton */
+  top: 0%;
+  /* Place le haut du bouton au milieu de la div filtres */
+  transform: translate(-0%, -50%);
+  /* Centre le bouton correctement */
+  width: 64px;
+  height: 64px;
+  background-color: #011F26;
+  color: white;
+  border-radius: 50%;
+  border: 2.5px solid white;
+  display: flex;
+  align-items: center;
+  /* Centre verticalement */
+  justify-content: center;
+  /* Centre horizontalement */
+  transition: transform 0.4s, background-color 0.5s;
+  /* Ajoute une transition pour une animation fluide */
+}
+
+.filtres .btnFiltre:hover {
+  transform: translate(-0%, -50%) scale(1.1);
+  /* Agrandit le bouton de 10% au survol */
+  transform-origin: center;
+  /* Maintient le centre du bouton en bas pendant la transformation */
+}
+
+.filtre-actif .btnFiltre {
+  animation: blink 2s infinite;
+  /* Ajoute l'animation de clignotement */
+}
+
+@keyframes blink {
+  50% {
+    transform: translate(-0%, -50%) scale(1.2);
+    /* Agrandit le bouton de 10% au survol */
+    transform-origin: center;
+    /* Maintient le centre du bouton en bas pendant la transformation */
+    background-color: #ff9898;
+  }
+}
+
+.btnFiltre i {
+  font-size: 28px;
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* checkbox settings 👇 */
+
+.ui-checkbox {
+  --primary-color: #1677ff;
+  --secondary-color: #fff;
+  --primary-hover-color: #4096ff;
+  /* checkbox */
+  --checkbox-diameter: 20px;
+  --checkbox-border-radius: 5px;
+  --checkbox-border-color: #d9d9d9;
+  --checkbox-border-width: 1px;
+  --checkbox-border-style: solid;
+  /* checkmark */
+  --checkmark-size: 1.2;
+}
+
+.ui-checkbox, 
+.ui-checkbox *, 
+.ui-checkbox *::before, 
+.ui-checkbox *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ui-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: var(--checkbox-diameter);
+  height: var(--checkbox-diameter);
+  border-radius: var(--checkbox-border-radius);
+  background: var(--secondary-color);
+  border: var(--checkbox-border-width) var(--checkbox-border-style) var(--checkbox-border-color);
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.ui-checkbox::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+  box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+  border-radius: inherit;
+  opacity: 0;
+  -webkit-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  -o-transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+}
+
+.ui-checkbox::before {
+  top: 40%;
+  left: 50%;
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 7px;
+  border-right: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--secondary-color);
+  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  -ms-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  opacity: 0;
+  -webkit-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
+  -o-transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
+  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6),opacity 0.1s;
+}
+
+/* actions */
+
+.ui-checkbox:hover {
+  border-color: var(--primary-color);
+}
+
+.ui-checkbox:checked {
+  background: var(--primary-color);
+  border-color: transparent;
+}
+
+.ui-checkbox:checked::before {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  -ms-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  -o-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+}
+
+.ui-checkbox:active:not(:checked)::after {
+  -webkit-transition: none;
+  -o-transition: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  transition: none;
+  opacity: 1;
+}
+
+button {
+  font-size: 17px;
+  padding: 0.5em 2em;
+  border: 2px solid white;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+ }
+
+ .actions {
+  background-color: #1B4965;
+ }
+
+ .actions:hover {
+  background: linear-gradient(90deg, #1B4965 0%, #2c729e 100%);
+ }
+
+ .error {
+  background-color: #b30000;
+ }
+
+ .error:hover {
+  background: linear-gradient(90deg, #b30000 0%, #da4a4a 100%);
+ }
+
+ .params {
+  background-color: #4096ff;
+ }
+
+ .params:hover {
+  background: linear-gradient(90deg, #4096ff 0%, #70b0ff 100%);
+ }
+ 
+ button:active {
+  transform: translate(0em, 0.2em);
+ }
+
+ @media screen and (max-width: 1200px) {
+  app-filtres-lignes-pc{
+    display: none;
+  }
+ }
+
+    /* écrans petits PC */
+@media screen and (min-width: 1200px) {
+  .container .listOuvrages {
+    gap: 5px;
+  }
+  app-ligne-item {
+    width: 98%;
+  }
+  .container .filtres {
+    display: none;
+  }
+  .actionsBtns {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+  }
+  .entete .actionLignes {
+    margin-bottom: 0px;
+  }
+  .container .listOuvrages {
+    padding-bottom: 20px;
+  }
+}

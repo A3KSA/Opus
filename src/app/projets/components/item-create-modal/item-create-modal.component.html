@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Créer une nouvelle ligne</div>
+        </div>
+    </div>
+    <div class="listentetes" #myForm>
+            <!-- Votre code HTML actuel pour les champs -->
+            <div class="titres">
+                <div>Date *</div>
+                <div>Délai</div>
+                <div>Statut *</div>
+                <div>Désignation *</div>
+                <div>Installation *</div>
+                <div>Partie d'ouvrage *</div>
+                <div>Responsable *</div>
+                <div>Avancement (%) *</div>
+            </div>
+            <div class="forms">
+                <div class="form">
+                    <input class="input" type="date" name="creation" [value]="getTodayDate()">
+                    <span class="input-border"></span>
+                </div>
+                <div class="form">
+                    <input class="input" type="date" name="delai">
+                    <span class="input-border"></span>
+                </div>
+                <div class="form">
+                    <select class="input" name="triSelectStatuts">
+                        <option *ngFor="let value of listStatuts" [value]="value">{{ value }}</option>
+                    </select>
+                    <span class="input-border"></span>
+                </div>
+                <div class="form">
+                    <input class="input" type="input" required>
+                    <span class="input-border"></span>
+                </div>
+                <div class="form">
+                    <datalist id="instllationsOptions">
+                        <option *ngFor="let value of listInstallations" [value]="value">{{ value }}</option>
+                    </datalist>
+                    <input class="input" type="text" name="triSelect" list="instllationsOptions" required/>
+                    <span class="input-border"></span>
+                </div>
+                <div class="form">
+                    <datalist id="ouvragesOptions">
+                        <option *ngFor="let value of listOuvrages" [value]="value">{{ value }}</option>
+                    </datalist>
+                    <input class="input" type="text" name="triSelect" list="ouvragesOptions" required/>
+                    <span class="input-border"></span>
+                </div>
+                <div class="form">
+                    <select class="input" type="text" name="triSelectResp">
+                        <option *ngFor="let value of listResponsables" [value]="value" required>{{ value }}</option>
+                    </select>
+                    <span class="input-border"></span>
+                </div>
+                <div class="form">
+                    <input class="input" type="input" name="avancement" value="0" max="100" min="0" required>
+                    <span class="input-border"></span>
+                </div>
+            </div>
+    </div>
+    <div class="descriptif">
+        <div>Descriptif</div>
+        <textarea class="input2" type="input" name="inputDescriptif"></textarea>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    </div>
+    <div class="footer">
+        <div>(*) Champs obligatoires</div>
+        <div class="checkbox">
+            <input type="checkbox" class="ui-checkbox" id="visibleCheckbox" [(ngModel)]="isVisibleOnPrint">
+            <span>Visible sur l'impression</span>
+        </div>
+    </div>
+    <div class="actionRapports">
+        <button class="params">Ajouter image <i class='bx bx-images'></i></button>
+        <button class="params" (click)="onSubmit()"> Enregistrer <i class='bx bx-add-to-queue'></i></button>
+    </div>
+</div>

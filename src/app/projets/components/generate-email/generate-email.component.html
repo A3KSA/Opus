@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Génération du fichier email</div>
+        </div>
+    </div>
+    <div class="listentetes">
+        <input type="file" (change)="onFileSelected($event)" id="fileInput" />
+        <div class="actionRapports">
+            <button class="params" (click)="genererEML()"> Générer <i class='bx bx-add-to-queue'></i></button>
+        </div>
+    </div>

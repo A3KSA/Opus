@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Chercher une personne</div>
+        </div>
+    </div>
+    <div class="moteur">
+        <div class="titres">
+            <div>Nom</div>
+            <div>Prénom</div>
+            <div>Entreprise</div>
+        </div>
+        <div class="forms">
+            <div class="form">
+                <input class="input" type="input" name="entreprise" [(ngModel)]="filtres.Nom">
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <input class="input" type="input" name="entreprise" [(ngModel)]="filtres.Prenom">
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <input class="input" type="input" name="entreprise" [(ngModel)]="filtres.Entreprise">
+                <span class="input-border"></span>
+            </div>
+        </div>
+    </div>
+    <div class="listentetes">
+        <div class="hr">
+            <div class="cell nom">Nom</div>
+            <div class="cell prenom">Prénom</div>
+            <div class="cell initiales">Initiales</div>
+            <div class="cell entreprise">Entreprise</div>
+        </div>
+        <div class="listePeople">
+            <div class="row" *ngFor="let person of filtrerDonnees; let i = index" (click)="toggleRowColor(i)" [ngClass]="{'selected': selectedRowIndex === i}">
+                <div class="cell nom">{{ person.Nom }}</div>
+                <div class="cell prenom">{{ person.Prenom }}</div>
+                <div class="cell initiales">{{ person.Initiales }}</div>
+                <div class="cell entreprise">{{ person.Entreprise }}</div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="actionRapports">
+        <button class="params" (click)="selectPerson()"> Sélectionner <i class='bx bxs-add-to-queue bx-rotate-90'></i></button>
+    </div>
+</div>

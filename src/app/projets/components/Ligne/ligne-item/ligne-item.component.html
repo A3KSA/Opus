@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="content" [style.background-color]="ligne.color" [ngClass]="{'completed': ligne.statut === 'Terminé'}">
+        <div class="date">
+            <div>{{formatDate(ligne.date)}}</div>
+            <div><span class="statut">{{ligne.statut}}</span>
+            </div>
+        </div>
+        <div class="principal">
+            <div class="titre">{{ligne.designation}}</div>
+            <div class="infos">
+                <div>Installation: {{ligne.installation}}</div>
+                <div>Partie d'ouvrage: {{ligne.ouvrage}}</div>
+                <div>Resp: <span style="font-weight: 400;">{{ligne.prenom_responsable}} {{ligne.nom_responsable}}</span></div>
+            </div>
+        </div>
+        <div class="avancement">
+            <div class="avancementText">Avancement: </div>
+            <div class="progress-loader">
+                <div class="progress" [style.width]="initializeProgressBarWidth(ligne.avancement)"></div>
+            </div>
+            <div class="avancementPercent">{{initializeProgressBarWidth(ligne.avancement)}}</div>
+        </div>
+        <div class="descriptif2">
+            <p>
+                {{formatDescription(ligne.description)}}
+            </p>
+        </div>
+        <div class="footer2">
+            <div class="avancement2">
+                <div class="progress-loader">
+                    <div class="progress" [style.width]="initializeProgressBarWidth(ligne.avancement)"></div>
+                </div>
+                <div class="avancementPercent">{{initializeProgressBarWidth(ligne.avancement)}}</div>
+            </div>
+            <div><span class="statut2">{{ligne.statut}}</span></div>
+            <div class="infos2">
+                <div>Délai: {{ligne.delai}}</div>
+            </div>
+            <!--<div class="checkbox">
+                <input type="checkbox" class="ui-checkbox" disabled>
+                <span>Image</span>
+            </div>-->
+            <button class="params notes-button" (click)="openNotesList(ligne);$event.stopPropagation() "
+                style="padding: 0.15em 0.5em; ">
+                <div class="checkbox" style="gap: 5px;">
+                    <input type="checkbox" class="ui-checkbox" disabled [checked]="hasNotes">
+                    <span>Notes</span><i class='bx bx-list-ul'></i>
+                </div>
+            </button>
+            <i class='bx bx-x' (click)="deleteSpecificLine(ligne.pk_ligne);$event.stopPropagation()"></i>
+        </div>
+    </div>
+    <div class="descriptif">
+        <p>
+            {{formatDescription(ligne.description)}}
+        </p>
+    </div>
+    <div class="footer">
+        <div class="infos2">
+            <div>Délai: {{ligne.delai}}</div>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" [checked]="ligne.impression === 1" class="ui-checkbox" disabled>
+            <span>Impression</span>
+        </div>
+        <!--<div class="checkbox">
+            <input type="checkbox" class="ui-checkbox" disabled>
+            <span>Image</span>
+        </div>-->
+        <button class="params notes-button" (click)="openNotesList(ligne);$event.stopPropagation() "
+            style="padding: 0.15em 0.5em; ">
+            <div class="checkbox" style="gap: 5px;">
+                <input type="checkbox" class="ui-checkbox" disabled [checked]="hasNotes">
+                <span>Notes</span><i class='bx bx-list-ul'></i>
+            </div>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Logs</h1>
+    <div class="logs-table-container">
+        <div class="wrapper">
+            <table class="logs-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let log of logs">
+                        <td>{{ log }}</td>
+                        <!--<td>{{ log.date }}</td>
+                <td>{{ log.type }}</td>
+                <td>{{ log.message }}</td>-->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

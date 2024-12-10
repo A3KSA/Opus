@@ -1,0 +1,142 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px 30px;
+    width: 100%;
+    min-width: 300px;
+    max-width: 500px;
+    padding-bottom: 20px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.header .titre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.listentetes {
+    display: flex; /* or inline-flex */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    gap: 5px;
+    height: 500px;
+    overflow-y: auto;
+}
+
+.actionRapports {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0px 5px 0px 5px;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    background-color: #EDE7E3;
+    border-radius: 20px;
+    border: 3px solid white;
+    width: 90%;
+    height: auto;
+    transition: 0.4s;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.user:hover{
+  transform: scale(1.02);
+}
+
+.user .content {
+    display: flex;
+    flex-direction: row;
+    background-color: #1B4965;
+    color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    width: auto;
+    height: auto;
+    padding: 10px 20px 10px 20px;
+    font-size: 14px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .legendes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .legende {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .couleur {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  button {
+    font-size: 17px;
+    padding: 0.5em 2em;
+    border: 2px solid white;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+   }
+  
+  
+  
+   .actions {
+    background-color: #4096ff;
+   }
+  
+   .actions:hover {
+    background: linear-gradient(90deg, #4096ff 0%, #4096ff 100%);
+   }
+  
+   .content .bx-x {
+    font-size: 20px;
+    background-color: #b30000;
+    border-radius: 5px;
+    border: 1px solid #fff;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }

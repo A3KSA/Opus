@@ -1,0 +1,215 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px 30px;
+    width: auto;
+    min-width: 500px;
+    padding-bottom: 20px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.header .titre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.listentetes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    font-size: 17px;
+    padding: 0.5em 2em;
+    border: 2px solid white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.actions {
+    background-color: #1B4965;
+}
+
+.actions:hover {
+    background: linear-gradient(90deg, #1B4965 0%, #2c729e 100%);
+}
+
+.params {
+    background-color: #4096ff;
+}
+
+.params:hover {
+    background: linear-gradient(90deg, #4096ff 0%, #70b0ff 100%);
+}
+
+.script {
+    background-color: #ffac40;
+}
+
+.script:hover {
+    background: linear-gradient(90deg, #ffac40 0%, #ffac40 100%);
+}
+
+button:active {
+    transform: translate(0em, 0.2em);
+}
+
+.listePeople {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 98%;
+    overflow: auto;
+    max-height: 500px;
+}
+
+.hr {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 98%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.row:hover {
+    background-color: #5ea4ff;
+    color: white;
+    cursor: pointer;
+}
+
+.row.selected {
+    background-color: #5ea4ff;
+    color: white;
+}
+
+.cell {
+    flex: 1; /* La cellule s'étire pour remplir l'espace disponible */
+    flex-basis: 0; /* La taille de base de la cellule est définie sur 0 */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 5px 5px 5px;
+    white-space: nowrap; /* Empêche le texte de se diviser sur plusieurs lignes */
+    overflow: hidden; /* Cache tout texte qui dépasse */
+    text-overflow: ellipsis; /* Affiche "..." pour indiquer un texte tronqué */
+}
+
+.cell.nom {
+    flex-basis: 25%; /* Largeur de la colonne Nom */
+}
+
+.cell.prenom {
+    flex-basis: 25%; /* Largeur de la colonne Prénom */
+}
+
+.cell.initiales {
+    flex-basis: 15%; /* Largeur de la colonne Initiales */
+}
+
+.cell.entreprise {
+    flex-basis: 30%; /* Largeur de la colonne Entreprise */
+}
+
+.moteur {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.titres,
+.forms {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 5px;
+    padding: 0px 20px 0px 20px;
+}
+
+.titres {
+    width: 20%;
+    font-size: 14px;
+}
+
+.forms {
+    width: 90%;
+}
+
+.form {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+/* styling of Input */
+.input {
+    color: #000000;
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    box-sizing: border-box;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+    border-bottom: 1px solid rgba(221, 221, 221, 0.39);
+}
+
+/* styling of animated border */
+.input-border {
+    position: absolute;
+    background: #5891ff;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s;
+}
+
+/* Hover on Input */
+input:hover {
+    background: #4985e01f;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* here is code of animated border */
+input:focus~.input-border {
+    width: 100%;
+}

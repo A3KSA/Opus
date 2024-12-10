@@ -1,0 +1,20 @@
+<div class="container" *ngIf="step">
+  <div class="gauche">
+    <img [src]="step.imageUrl" alt="" class="circular-image">
+  </div>
+  <div class="droite">
+    <div class="infos">
+      <div class="entete">
+        <div class="titreStep">{{ step.titre }}</div>
+        <div class="adresseStep">{{ step.rue }}, <b>{{ step.npa }}</b> {{ step.localite }}</div>
+      </div>
+      <div class="footer">
+        <div class="emailStep"><i class='bx bx-envelope'></i> {{ step.email}}</div>
+        <div class="telStep"><i class='bx bx-phone'></i> {{ step.telephone}}</div>
+      </div>
+    </div>
+    <div class="action">
+      <button class="actions" (click)="openModalUpdateInfosStep();$event.stopPropagation()"> <i class='bx bx-edit'></i></button>
+    </div>
+  </div>
+</div>

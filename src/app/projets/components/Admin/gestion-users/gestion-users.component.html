@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Liste des utilisateurs</div>
+        </div>
+        <div class="legendes">
+            <div class="legende">
+                <div class="couleur" style="background-color: rgb(237, 139, 22);"> </div>
+                <div class="texte">Super admin</div>
+            </div>
+            <div class="legende">
+                <div class="couleur" style="background-color: rgb(8, 151, 180);"> </div>
+                <div class="texte">Admin</div>
+            </div>
+            <div class="legende">
+                <div class="couleur" style="background-color: rgb(2, 166, 118);"> </div>
+                <div class="texte">User</div>
+            </div>
+        </div>
+    </div>
+    <div class="listentetes">
+        <div class="user" *ngFor="let user of listUsers" (click)="openEditUser($event, user)">
+            <div class="content" [ngStyle]="{'background-color': getBackgroundColor(user.fk_privilege_EPLAN)}">
+                <div>
+                    <div style="font-weight: 400;">
+                        {{user.prenom}} {{user.nom}}
+                    </div>
+                    <div style="font-weight: 300;"> 
+                        {{user.initiale}}
+                    </div>
+                </div>
+                <div class="footer">
+                    <div> 
+                        <div style="font-weight: 300;">
+                            Dernière Connexion
+                        </div>
+                        <div style="font-weight: 400;">
+                            {{user.derniere_connexion}}
+                        </div>
+                    </div>
+                    <i class='bx bx-x' (click)="deleteSpecificUser(user.pk_utilisateur);$event.stopPropagation()"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="actionRapports">
+        <button class="actions"> Ajouter un utilisateur <i class='bx bx-user-plus'></i></button>
+    </div>
+</div>

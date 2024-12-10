@@ -1,0 +1,132 @@
+<div class="container">
+  <div class="entete">
+    <div class="titre">
+      <div class="id">{{partOfWorkDesignation}}</div>
+      <div class="projet">{{partOfWorkTitre}}</div>
+    </div>
+    <div>Création tableaux et génération schémas</div>
+    <div class="actionsBtns">
+      <div class="actionRapports">
+        <button class="params" (click)="generateExcel()"> Générer Excel <i class='bx bx-list-ol'></i></button>
+      </div>
+    </div>
+    <div class="actionsBtns">
+      <div class="actionRapports">
+        <div class="marqueNew">Disjoncteur: </div>
+        <select id="marqueAppareil" [(ngModel)]="selectedDisjoncteurBrand" (change)="onDisjoncteurBrandChange()">
+          <option value="" selected>Marque non définie</option>
+          <option *ngFor="let marque of disjoncteurBrands" [value]="marque.PK_TypeEquipement">{{marque.Nom }}</option>
+        </select>
+      </div>
+      <div class="actionRapports">
+        <div class="marqueNew">Variateur: </div>
+        <select id="marqueAppareil" [(ngModel)]="selectedVariateurBrand" (change)="onVariateurBrandChange()">
+          <option value="" selected>Marque non définie</option>
+          <option *ngFor="let marque of variateurBrands" [value]="marque.PK_TypeEquipement">{{marque.Nom }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="table">
+      <div class="row">
+        <div class="header">
+          <div class="designation">Niveau 1</div>
+        </div>
+        <div class="header2">
+          <div class="designation">Niveau 2</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rowHeader">
+        </div>
+        <div class="rowHeader2">
+          <div class="designation">Désignation</div>
+          <div class="description">Description</div>
+          <div class="ti">N° TI</div>
+          <div class="type">Type machine</div>
+          <div class="donnees">
+            <div class="intensite">Intensité</div>
+            <div class="puissance">Puissance</div>
+          </div>
+        </div>
+      </div>
+      <div class="bloc">
+        <div class="row" *ngFor="let cellule of groupedSchemas">
+          <div class="rowSchem">
+            <!-- Affichage de la cellule -->
+            <div class="cell">
+              <div class="designationCell">{{ cellule.CelluleDesignation }}</div>
+              <div class="descriptionCell">{{ cellule.CelluleDescription }}</div>
+            </div>
+          </div>
+          <div class="rowSchem2">
+            <!-- Affichage du premier schéma aligné avec la cellule -->
+            <div class="schem" *ngFor="let schema of cellule.schemas"
+              (click)="openDetailsModal(cellule, schema);$event.stopPropagation()">
+              <div class="designation">{{ schema.SchemaDesignation }}</div>
+              <div class="description">{{ schema.SchemaDescription }}</div>
+              <div class="ti">
+                <div class="ti1">
+                  <select id="typeAppareil" (click)="$event.stopPropagation()" [(ngModel)]="schema.SegmentStructure"
+                    (change)="sendData(cellule, schema)">
+                    <option [ngValue]="null" disabled>-</option>
+                    <option *ngFor="let segment of segments" [value]="segment.Abbreviation">{{ segment.Abbreviation }}
+                    </option>
+                  </select>
+                </div>
+                <div class="ti1">
+                  <div class="type" *ngFor="let equip of schema.equipments">
+                    <select [(ngModel)]="equip.EquipCode" (click)="$event.stopPropagation()"
+                      (change)="onTiNumberChange($event, cellule, schema, equip)" data-type="EquipCode">
+                      <option disabled>{{equip.EquipCode}}</option> <!-- Option vide par défaut -->
+                      <option *ngFor="let num of equip.AvailableEquipDesignationNumbers" [value]="num">
+                        {{ num }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="ti1">
+                  <div class="type" *ngFor="let equip of schema.equipments">
+                    <select [(ngModel)]="equip.EquipNumero_Ti" (click)="onOldTiNumberFocus(equip);$event.stopPropagation()"
+                      (change)="onTiNumberChange($event, cellule, schema, equip)" data-type="tiNumber">
+                      <option disabled>{{equip.EquipNumero_Ti}}</option> <!-- Option vide par défaut -->
+                      <option *ngFor="let num of equip.AvailableEquipNumbers" [value]="num">
+                        {{ num }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+              <div class="typeMachine" *ngFor="let equip of schema.equipments">
+                <div class="ti1">
+                  <select id="typeAppareil" (click)="$event.stopPropagation()"
+                    [(ngModel)]="equip.TypeMachineDesignation" (change)="sendData(cellule, schema)">
+                    <!-- Option "Non défini" lorsque TypeMachineDesignation est null -->
+                    <option [ngValue]="null" *ngIf="equip.TypeMachineDesignation === null">Non défini</option>
+                    <option *ngFor="let type of typesMachine" [value]="type.TypeMachineDesignation">{{
+                      type.TypeMachineDesignation }}</option>
+                  </select>
+                </div>
+              </div>
+              <!-- Affichage de l'intensité et de la puissance pour chaque équipement -->
+              <div class="donnees" *ngFor="let equip of schema.equipments">
+                <div class="intensite">
+                  <input type="text" placeholder="inten." [(ngModel)]="equip.EquipIntensite"
+                    (click)="$event.stopPropagation()" (ngModelChange)="sendData(cellule, schema)">
+                  <div>A</div>
+                </div>
+                <div class="puissance">
+                  <input type="text" placeholder="puiss." [(ngModel)]="equip.EquipPuissance"
+                    (click)="$event.stopPropagation()" (ngModelChange)="sendData(cellule, schema)">
+                  <div>kW</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Créer un nouveau projet</div>
+        </div>
+    </div>
+    <div class="listentetes" #myForm>
+            <!-- Votre code HTML actuel pour les champs -->
+            <div class="titres">
+                <div>Numéro de projet</div>
+                <div>Titre du projet</div>
+                <div>Localité</div>
+            </div>
+            <div class="forms">
+                <div class="form">
+                    <input class="input" type="input" name="numero">
+                    <span class="input-border"></span>
+                    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+                </div>
+                <div class="form">
+                    <input class="input" type="input" name="titre" [(ngModel)]="projectName">
+                    <span class="input-border"></span>
+                </div>
+                <div class="form">
+                    <input class="input" type="input" name="localite">
+                    <span class="input-border"></span>
+                </div>
+            </div>
+    </div>
+    <div class="descriptif">
+        <div>Descriptif</div>
+        <textarea class="input2" type="input" name="inputDescriptif"></textarea>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        <div *ngIf="isLoading" class="loading-spinner">Chargement...</div>
+    </div>
+    <div class="Image">
+        <div>Image de fond</div>
+        <input type="file" (change)="onFileSelected($event)">
+    </div>
+    <div class="actionRapports">
+        <button class="params" (click)="onSubmit()"> Enregistrer <i class='bx bx-add-to-queue'></i></button>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="colonne">
+    <div class="featured-articles">
+        <div class="titre">Articles populaires</div>
+        <div class="listFeaturedArticles">
+            <app-article-item *ngFor="let article of articlesByPopularity" [article]="article"></app-article-item>
+        </div>
+    </div>
+    <div class="latest-articles">
+        <div class="titre">Derniers articles</div>
+        <div class="listFeaturedArticles">
+            <app-article-item *ngFor="let article of articlesByDate" [article]="article"></app-article-item>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="content">
+            <div class="tags">
+                <div class="titreFooter">Actions</div>
+                <div class="actions">
+                    <button class="actions2" (click)="navigateToNouvelArticle()"> Nouvel article <i class='bx bx-news bx-tada'></i></button>
+                </div>
+            </div>
+            <div class="tags">
+                <div class="titreFooter">Catégories</div>
+                <div class="listTags">
+                    <div class="cate" *ngFor="let category of allCategories">{{ category }}</div>
+                </div>
+            </div>
+            <div class="tags">
+                <div class="titreFooter">Tags</div>
+                <div class="listTags">
+                    <div class="tag" *ngFor="let tag of allTags">{{ tag }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

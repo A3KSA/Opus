@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="entete">
+        <div class="titre">
+            <div class="id">{{projectId}}</div>
+            <div class="projet">{{projectTitre}}</div>
+        </div>
+        <div class="actionsBtns">
+            <div class="actionRapports">
+                <button class="params" (click)="openEntitesForRapport(this.projectId)"> Imprimer rapport <i
+                        class='bx bxs-file-doc'></i></button>
+                <button class="params" (click)="openGenerateList(this.projectId)"> Imprimer liste <i
+                        class='bx bx-list-ul'></i></button>
+            </div>
+            <div class="actionLignes">
+                <button class="actions" (click)="openItemCreate()"> Nouvelle ligne <i
+                        class='bx bx-add-to-queue'></i></button>
+                <button class="params" (click)="openEntites(this.projectId)"> Entités et entête <i
+                        class='bx bx-list-check'></i></button>
+                <button class="error" (click)="setLinesToLate(this.projectId)"> Retard <i
+                        class='bx bx-error'></i></button>
+            </div>
+        </div>
+        <app-filtres-lignes-pc (filterStatusChanged)="onFilterStatusChanged($event)" [projectId]="projectId"
+            [checkboxInstall]="listeInstallations" [checkboxOuvrages]="listeOuvrages"
+            [checkboxResp]="listeResponsables" [checkboxEntites]="ListeEntitees"></app-filtres-lignes-pc>
+    </div>
+    <div class="listOuvrages">
+        <div *ngIf="filteredLines.length === 0">Aucune ligne pour le moment</div>
+        <app-ligne-item *ngFor="let ligne of filteredLines" [ligne]="ligne"  (click)="openDialog(ligne)"></app-ligne-item>
+    </div>
+    <div class="filtres" [class.filtre-actif]="isFilterActive">
+        <div class="btnFiltre" (click)="sliddingFiltersComponent()"><i class='bx bx-filter-alt'></i></div>
+        <app-filtre-lignes (filterStatusChanged)="onFilterStatusChanged($event)" [projectId]="projectId"
+            [checkboxInstall]="listeInstallations" [checkboxOuvrages]="listeOuvrages"
+            [checkboxResp]="listeResponsables" [checkboxEntites]="ListeEntitees"></app-filtre-lignes>
+    </div>
+</div>

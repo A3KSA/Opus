@@ -1,0 +1,18 @@
+<div class="colonne">
+  <div class="colonne-scrollable" [ngClass]="{'active': selectedStep}">
+    <div class="search-bar">
+      <button class="buttonMenu actions" (click)="toggleSidebar()"><i class='bx bx-menu-alt-left bx-tada' ></i></button>
+      <input class="search-input" type="text" placeholder="Recherche une STEP" [(ngModel)]="searchText">
+      <button class="search-btn"><i class='bx bx-search-alt-2'></i></button>
+    </div>
+    <div class="listSteps">
+      <app-step class="stepElement" *ngFor="let allSteps of filteredSteps" [step]="allSteps" (click)="selectStep(allSteps)"></app-step>
+    </div>
+  </div>
+  <div class="colonne-fixe" [ngClass]="{'active': selectedStep}">
+    <div class="content">
+      <app-step-details [selectedStep]="selectedStep" (backToColumn)="goBackToColumn()"></app-step-details>
+      <p class="centered-paragraph" *ngIf="!selectedStep">Aucune STEP sélectionnée</p>
+    </div>
+  </div>
+</div>

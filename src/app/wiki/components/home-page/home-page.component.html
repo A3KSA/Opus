@@ -1,0 +1,16 @@
+<div class="container positioned-container">
+  <div class="entete">
+    <div class="actionsBtns">
+      <div *ngIf="utilisateur">
+        <div>Bienvenue, {{ utilisateur.nom }} {{ utilisateur.prenom }}</div>
+      </div>
+        <div class="ask">Vous avez des problèmes ?</div>
+      <div class="actionRapports">
+        <!--<button class="actions2"> Nouvel article <i class='bx bx-news bx-tada'></i></button>-->
+        <input class="inputSearch" [(ngModel)]="searchTerm" placeholder="Tapez vos termes de recherche ici">
+        <button class="actions3" (click)="onSearch()"> Rechercher <i class='bx bx-news bx-tada'></i></button>
+      </div>
+    </div>
+  </div>
+  <app-content></app-content>
+</div>

@@ -1,0 +1,195 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px 30px;
+    padding: 0px 10px 20px 10px;
+    min-width: 500px;
+  }
+  
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .header .titre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+  }
+
+  .ligne {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .designation {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .description {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .ti {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+  }
+  .ti1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .unite {
+    display: flex;
+  }
+
+  select {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+
+  .row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .propriete {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
+    gap: 5px;
+  }
+
+.disjoncteur {
+    padding-top: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+input {
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #ffffff;
+  padding: 5px 0px 5px 5px;
+  width: 10%;
+  border-radius: 6px;
+}
+
+.plage {
+  width: 15%;
+}
+
+input:focus {
+  border:1px solid #ffffff;
+}
+
+.contacteurs {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .disjoncteurs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  gap: 5px;
+ }
+
+.contacteur {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.contacteur .propriete {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-bottom: 5px;
+  gap: 5px;
+}
+
+button {
+  font-size: 17px;
+  padding: 0.5em 2em;
+  border: 2px solid white;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+ }
+
+ .actionsBtn {
+  background-color: #103992;
+ }
+
+ .actionsBtn:hover {
+  background: linear-gradient(90deg, #103992 0%, #4096ff 100%);
+ }
+
+ .actionsBtnNew {
+  background-color: #fc7a00;
+ }
+
+ .actionsBtnNew:hover {
+  background: linear-gradient(90deg, #fc7a00 0%, #ffcb88 100%);
+ }
+ 
+ button:active {
+  transform: translate(0em, 0.2em);
+ }
+

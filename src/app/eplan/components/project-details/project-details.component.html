@@ -1,0 +1,235 @@
+<div class="container">
+    <div class="entete">
+        <div class="titre">
+            <div class="id">{{projectId}}</div>
+            <div class="projet">{{projectTitre}}</div>
+        </div>
+        <div>Gestion de la structure - Parties d'ouvrage</div>
+        <div class="actionsBtns">
+            <div class="actionRapports">
+                <button class="params" (click)="openModalSegments()"> Liste ségments <i
+                        class='bx bx-list-ul'></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="table">
+            <div class="rowHeader">
+                <div class="volet">
+                </div>
+                <div class="designationTitre">Désignation</div>
+                <div class="descriptionTitre">Description</div>
+            </div>
+            <div class="bloc" *ngFor="let partOfWork of listPartOfWorks; let i = index">
+                <div class="row">
+                    <div class="volet">
+                        <i (click)="togglePartVisibility(partOfWork.PK_Ouvrage)"
+                            [ngClass]="visiblePartsMap.get(partOfWork.PK_Ouvrage) ? 'bx bx-chevron-up' : 'bx bx-chevron-down'"></i>
+                    </div>
+                    <!-- Designation Field -->
+                    <div *ngIf="!isEditing(i, 'Designation')" (click)="enableEdit(i, 'Designation')"
+                        class="designation">{{partOfWork.Designation}}</div>
+                    <input *ngIf="isEditing(i, 'Designation')" [(ngModel)]="partOfWork.Designation"
+                        (blur)="disableEdit()"
+                        (keydown.enter)="onEnterPress($event, 'partOfWork', partOfWork.PK_Ouvrage, 'Designation', partOfWork.Designation)"
+                        class="editable-input-designation" autofocus />
+                    <!-- Description Field -->
+                    <div *ngIf="!isEditing(i, 'Description')" (click)="enableEdit(i, 'Description')"
+                        class="description">
+                        {{ partOfWork.Description }}
+                    </div>
+                    <input *ngIf="isEditing(i, 'Description')" [(ngModel)]="partOfWork.Description"
+                        (blur)="disableEdit()"
+                        (keydown.enter)="onEnterPress($event, 'partOfWork', partOfWork.PK_Ouvrage, 'Description', partOfWork.Description)"
+                        class="editable-input-description" autofocus />
+                    <div class="action">
+                        <div class="actionBtnDelete" *ngIf="visiblePartsMap.get(partOfWork.PK_Ouvrage)"
+                            (click)="deletePartOfWork(partOfWork.PK_Ouvrage)"><i style="font-size: 24px;"
+                                class='bx bx-x'></i></div>
+                        <div class="actionBtnEdit"
+                            (click)="onPartOfWorkClick(partOfWork.PK_Ouvrage, partOfWork.Description)"><i
+                                style="font-size: 22px;" class='bx bx-arrow-from-left'></i></div>
+                    </div>
+                </div>
+                <div class="cell-list" [ngClass]="{'is-visible': visiblePartsMap.get(partOfWork.PK_Ouvrage)}">
+                    <div class="bloc" *ngFor="let cell of cellsMap.get(partOfWork.PK_Ouvrage); let j = index">
+                        <div class="rowCell">
+                            <i (click)="toggleCellVisibility(cell.PK_Cellule)"
+                                [ngClass]="visibleCellsMap.get(cell.PK_Cellule) ? 'bx bx-chevron-up' : 'bx bx-chevron-down'"></i>
+
+                            <!-- Designation Field -->
+                            <div *ngIf="!isEditing(j, 'DesignationCell')" (click)="enableEdit(j, 'DesignationCell')"
+                                class="designation">{{cell.Designation}}</div>
+                            <input *ngIf="isEditing(j, 'DesignationCell')" [(ngModel)]="cell.Designation"
+                                (blur)="disableEdit()"
+                                (keydown.enter)="onEnterPress($event, 'cell', cell.PK_Cellule, 'Designation', cell.Designation)"
+                                class="editable-input-designation" autofocus />
+
+                            <!-- Description Field -->
+                            <div *ngIf="!isEditing(j, 'DescriptionCell')" (click)="enableEdit(j, 'DescriptionCell')"
+                                class="description">{{ cell.Description }}</div>
+                            <input *ngIf="isEditing(j, 'DescriptionCell')" [(ngModel)]="cell.Description"
+                                (blur)="disableEdit()"
+                                (keydown.enter)="onEnterPress($event, 'cell', cell.PK_Cellule, 'Description', cell.Description)"
+                                class="editable-input-description" autofocus />
+
+                            <div class="action">
+                                <!--<div class="actionBtnEdit"><i style="font-size: 20px; color: rgb(255, 255, 255);"
+                                        class='bx bx-edit-alt'></i></div>-->
+                                <div class="actionBtnDelete" *ngIf="visibleCellsMap.get(cell.PK_Cellule)"
+                                    (click)="deleteCellule(partOfWork.PK_Ouvrage, cell.PK_Cellule)"><i
+                                        style="font-size: 24px;" class='bx bx-x'></i></div>
+                            </div>
+                        </div>
+                        <!-- Liste des schémas pour cette cellule -->
+                        <div class="cell-list" [ngClass]="{'is-visible': visibleCellsMap.get(cell.PK_Cellule)}">
+                            <div class="bloc" *ngFor="let schema of schemasMap.get(cell.PK_Cellule); let k = index">
+                                <div class="rowSchem">
+                                    <div class="volet">
+                                    </div>
+                                    <!-- Designation Field -->
+                                    <div *ngIf="!isEditing(k, 'DesignationSchema')"
+                                        (click)="enableEdit(k, 'DesignationSchema')" class="designation">
+                                        {{schema.Designation}}</div>
+                                    <input *ngIf="isEditing(k, 'DesignationSchema')" [(ngModel)]="schema.Designation"
+                                        (blur)="disableEdit()"
+                                        (keydown.enter)="onEnterPress($event, 'schema', schema.PK_Schema, 'Designation', schema.Designation)"
+                                        class="editable-input-designation" autofocus />
+
+                                    <!-- Description Field -->
+                                    <div *ngIf="!isEditing(k, 'DescriptionSchema')"
+                                        (click)="enableEdit(k, 'DescriptionSchema')" class="descriptionSchema">{{
+                                        schema.Description }}</div>
+                                    <input *ngIf="isEditing(k, 'DescriptionSchema')" [(ngModel)]="schema.Description"
+                                        (blur)="disableEdit()"
+                                        (keydown.enter)="onEnterPress($event, 'schema', schema.PK_Schema, 'Description', schema.Description)"
+                                        class="editable-input-descriptionSchema" autofocus />
+                                    <div class="pct">{{schema.Pos_PCT}}</div>
+                                    <div class="action">
+                                        <!--<div class="actionBtnEdit"><i style="font-size: 20px; color: rgb(255, 255, 255);"
+                                                class='bx bx-edit-alt'></i></div>-->
+                                        <div class="actionBtnDelete" (click)="deleteSchema(cell.PK_Cellule, schema.PK_Schema)"><i
+                                                style="font-size: 24px;" class='bx bx-x'></i></div>
+                                    </div>
+                                </div>
+                                <!--<div class="cell-list"
+                                    [ngClass]="{'is-visible': visibleScehmasMap.get(schema.PK_Schema)}">
+                                    <div class="rowHeader">
+                                        <div class="volet">
+                                        </div>
+                                        <div class="designationNew">Désign.</div>
+                                        <div class="descriptionNew">Description</div>
+                                        <div class="pct">Pos PCT</div>
+                                        <div class="marqueNew">Fournisseur</div>
+                                    </div>
+                                    <div class="rowEqui" *ngFor="let equipment of equipmentsMap.get(schema.PK_Schema)">
+                                        <div class="volet"></div>
+                                        <div class="designationNew">{{equipment.Designation}}</div>
+                                        <div class="descriptionNew">{{equipment.Description}}</div>
+                                        <div class="pct">{{equipment.Pos_PCT}}</div>
+                                        <div class="marqueNew">{{equipment.Nom}}</div>
+                                        <div class="action">
+                                            <div class="actionBtnDelete"
+                                                (click)="deleteEquipment(schema.PK_Schema, equipment.PK_Equipement)"><i
+                                                    style="font-size: 24px;" class='bx bx-x'></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="rowAction" *ngIf="hasNoEquipmentsMap.get(schema.PK_Schema)">
+                                        <div class="volet">
+                                        </div>
+                                        <div class="designationNew2"><input type="text" placeholder="Désign."
+                                                [(ngModel)]="designationEquip" #designationEquipInput="ngModel"
+                                                required>
+                                        </div>
+                                        <div class="descriptionNew2"><input type="text" placeholder="Équipement"
+                                                [(ngModel)]="descriptionEquip" #descriptionEquipInput="ngModel"
+                                                required>
+                                        </div>
+                                        <div class="pct">
+                                            <select id="typeAppareil" [(ngModel)]="posPCTEquip"
+                                                #posPCTEquipInput="ngModel">
+                                                <option value="" selected>Type non défini</option>
+                                                <option value="consommateur">Consommateur</option>
+                                                <option value="mesure">Mesure</option>
+                                            </select>
+                                        </div>
+                                        <div class="type">
+                                            <select id="typeAppareil" [(ngModel)]="selectedType"
+                                                (change)="onTypeChange()">
+                                                <option value="" selected>Type non défini</option>
+                                                <option value="disjoncteur">Disjoncteur</option>
+                                                <option value="variateur">Variateur/Démarreur</option>
+                                            </select>
+                                        </div>
+                                        <div class="marque">
+                                            <select id="marqueAppareil" [(ngModel)]="selectedMarque">
+                                                <option value="" selected>Marque non définie</option>
+                                                <option *ngFor="let marque of filteredMarques"
+                                                    [value]="marque.PK_TypeEquipement">{{
+                                                    marque.Nom }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="actionEquip">
+                                            <div class="actionBtnAdd" (click)="addEquipement(schema.PK_Schema)"><i
+                                                    style="font-size: 20px;" class='bx bx-list-plus'></i></div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                            </div>
+                            <div class="rowAction">
+                                <div class="volet">
+                                </div>
+                                <div class="designationAction"><input type="text" placeholder="Désign."
+                                        [(ngModel)]="designationSchema" #designationSchemaInput="ngModel" required>
+                                </div>
+                                <div class="descriptionSchema"><input type="text" placeholder="Schéma"
+                                        [(ngModel)]="descriptionSchema" #descriptionSchemaInput="ngModel" required>
+                                </div>
+                                <div class="pct">
+                                    <select id="typeAppareil" [(ngModel)]="posPCTSchema" #posPCTSchemaInput="ngModel">
+                                        <option value="" selected>Type non défini</option>
+                                        <option value="consommateur">Consommateur</option>
+                                        <option value="mesure">Mesure</option>
+                                    </select>
+                                </div>
+                                <div class="actionNew">
+                                    <div class="actionBtnAdd"
+                                        (click)="addSchema(cell.PK_Cellule, designationSchemaInput, descriptionSchemaInput)">
+                                        <i style="font-size: 20px;" class='bx bx-list-plus'></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rowAction">
+                        <div class="volet">
+                        </div>
+                        <div class="designationAction"><input type="text" placeholder="Désign."
+                                [(ngModel)]="designationCell" #designationCellInput="ngModel" required></div>
+                        <div class="description"><input type="text" placeholder="Cellule" [(ngModel)]="descriptionCell"
+                                #descriptionCellInput="ngModel" required></div>
+                        <div class="actionNew">
+                            <div class="actionBtnAdd"
+                                (click)="addCellule(partOfWork.PK_Ouvrage, designationCellInput, descriptionCellInput)">
+                                <i style="font-size: 20px;" class='bx bx-list-plus'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rowAction">
+                <div class="volet">
+                </div>
+                <div class="designation"><input type="text" placeholder="Désign." [(ngModel)]="designationPartOfWorks"
+                        #designationInput="ngModel" required></div>
+                <div class="description"><input type="text" placeholder="Partie d'ouvrage"
+                        [(ngModel)]="descriptionPartOfWorks" #descriptionInput="ngModel" required></div>
+                <div class="actionNew">
+                    <div class="actionBtnAdd" (click)="addPartOfWork(designationInput, descriptionInput)"><i
+                            style="font-size: 20px;" class='bx bx-list-plus'></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

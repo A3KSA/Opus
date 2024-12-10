@@ -1,0 +1,95 @@
+<div class="contenPrincipal">
+  <div class="triTexte">
+    <div class="ligneFiltre">
+      <select class="triSelect" name="triSelect" [(ngModel)]="selectedAuteur"
+        (change)="onCategrorieValueChange()">
+        <!-- Option par défaut -->
+        <option value="">Auteurs</option>
+        <option *ngFor="let value of listAuteurs" [value]="value">{{ value }}</option>
+      </select>
+      <select class="triSelect" name="triSelect" [(ngModel)]="selectedSuivi"
+        (change)="onCategrorieValueChange()">
+        <!-- Option par défaut -->
+        <option value="">Suivi</option>
+        <option *ngFor="let value of listeSuivis" [value]="value">{{ value }}</option>
+      </select>
+      <input class="inputSearch" placeholder="Titre">
+    </div>
+    <div class="ligneFiltre">
+      <div class="checkbox" *ngFor="let status of statusEntries">
+        <input type="checkbox" class="ui-checkbox" [checked]="statusFilters[status.etatProjet]"
+          (change)="onStatutChange(status.etatProjet)">
+        <div class="couleur" [style.backgroundColor]="status.color"></div>
+        <span>{{ status.etatProjet }}</span>
+      </div>
+    
+    <button class="Btn" (click)="resetFilters()">
+      <div class="sign">
+        <svg viewBox="0 0 16 16" class="bi bi-trash3-fill" fill="currentColor" height="18" width="18"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5">
+          </path>
+        </svg>
+      </div>
+      <div class="text">Delete</div>
+    </button>
+  </div>
+  </div>
+  <div class="content">
+    <div class="content2" *ngIf=" projets.length === 0">Aucun projet trouvé.</div>
+    <div class="listProjets" *ngFor="let projet of projets">
+      <div class="element" [ngStyle]="{'background-color': getStatusColor(projet.etatProjet)}">
+        <div class="header">
+          <div class="numProjet">{{projet.numProjet}}</div>
+          <div class="statut">{{projet.etatProjet}}</div>
+        </div>
+        <div class="contentElt">
+          <div class="objet">{{projet.objet}}</div>
+          <div class="description">{{projet.description}}</div>
+        </div>
+        <div class="footer">
+          <div class="texte">Auteur: {{projet.auteur}} Suivi: {{projet.suivi}}</div>
+          <div class="texte2">{{projet.date}} </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<section class="example-container mat-elevation-z8" tabindex="0">
+  <table mat-table [dataSource]="projets">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> N° Projet </th>
+      <td mat-cell *matCellDef="let element"> {{element.numProjet}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Objet </th>
+      <td mat-cell *matCellDef="let element"> {{element.objet }} </td>
+    </ng-container>
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.description }} </td>
+    </ng-container>
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.date }} </td>
+    </ng-container>
+    <ng-container matColumnDef="remarque">
+      <th mat-header-cell *matHeaderCellDef> Auteur </th>
+      <td mat-cell *matCellDef="let element"> {{element.auteur }} </td>
+    </ng-container>
+    <ng-container matColumnDef="etat">
+      <th mat-header-cell *matHeaderCellDef> Etat projet </th>
+      <td mat-cell *matCellDef="let element"> {{element.etatProjet }} </td>
+    </ng-container>
+    <ng-container matColumnDef="suivi">
+      <th mat-header-cell *matHeaderCellDef> Suivi </th>
+      <td mat-cell *matCellDef="let element"> {{element.suivi }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</section>-->

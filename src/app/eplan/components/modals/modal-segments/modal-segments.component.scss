@@ -1,0 +1,208 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px 30px;
+    padding: 0px 10px 20px 10px;
+    min-width: 500px;
+  }
+  
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .header .titre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+  }
+
+  .ligne {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .designation {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .description {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    max-height: 500px;
+    overflow-y: auto; /* Scroll vertical seulement */
+  }
+
+  button {
+    font-size: 17px;
+    padding: 0.5em 2em;
+    border: 2px solid white;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+   }
+  
+   .actionsBtn {
+    background-color: #103992;
+   }
+  
+   .actionsBtn:hover {
+    background: linear-gradient(90deg, #103992 0%, #4096ff 100%);
+   }
+  
+   .actionsBtnNew {
+    background-color: #fc7a00;
+   }
+  
+   .actionsBtnNew:hover {
+    background: linear-gradient(90deg, #fc7a00 0%, #ffcb88 100%);
+   }
+   
+   button:active {
+    transform: translate(0em, 0.2em);
+   }
+
+   .listSegments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+   }
+
+   .segment {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 10px 8px 10px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    border: 2px solid #cccccc;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.rowAction {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 10px 8px 10px;
+    background-color: #dfefff;
+    border-radius: 5px;
+    border: 2px solid #cccccc;
+    align-items: center;
+    width: 90%;
+    gap: 10px;
+}
+
+.designation2 {
+    width: 20%;
+}
+
+.description2 {
+    width: 70%;
+}
+
+.abbrev {
+    width: 20%;
+    font-weight: 500;
+}
+.nom {
+    width: 70%;
+}
+
+.actionBtnDelete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    padding: 5px;
+}
+
+.actionBtnDelete i {
+    color: #383b52;
+    transition: color 0.3s ease;
+    /* Transition pour un changement en douceur de la couleur */
+}
+
+.actionBtnDelete:hover {
+    background-color: #860909;
+    color: #ffffff;
+}
+
+.actionBtnDelete:hover i {
+    color: #ffffff;
+    /* Change la couleur de l'icône en blanc lors du survol */
+}
+
+input {
+    border: none; /* Assurez-vous qu'il n'y a pas de bordure */
+    font-size: 14px;
+    background-color: #f6fbff;
+    padding: 5px 0px 5px 5px;
+    width: 80%;
+    border-radius: 5px;
+    outline: none; /* Supprime la bordure de focus par défaut */
+}
+
+input:focus {
+    border: 1px solid #ffffff; /* Ajustez la bordure lors du focus */
+    outline: none; /* Supprime l'effet de focus du navigateur */
+}
+
+.actionBtnAdd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #094e86;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    padding: 5px;
+}
+
+.actionBtnAdd i {
+    color: #094e86;
+    transition: color 0.3s ease;
+    /* Transition pour un changement en douceur de la couleur */
+}
+
+.actionBtnAdd:hover,
+.actionBtnEdit:hover {
+    background-color: #094e86;
+    color: #ffffff;
+}
+
+.actionBtnAdd:hover i,
+.actionBtnEdit:hover i {
+    color: #ffffff;
+    /* Change la couleur de l'icône en blanc lors du survol */
+}

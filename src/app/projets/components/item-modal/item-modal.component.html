@@ -1,0 +1,98 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Modification de la ligne</div>
+        </div>
+    </div>
+    <div class="listentetes" #myForm>
+        <div class="titres">
+            <div>Date de création</div>
+            <div>Délai</div>
+            <div>Statut</div>
+            <div>Désignation</div>
+            <div>Installation</div>
+            <div>Partie d'ouvrage</div>
+            <div>Responsable</div>
+            <div>Avancement (%)</div>
+        </div>
+        <div class="forms">
+            <div class="form">
+                <input class="input" type="date" name="creation" [value]="formatDate(data.ligne.date)">
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <input class="input" type="date" name="delai" [value]="formatDate(data.ligne.delai)">
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <select class="input" name="status" [(ngModel)]="data.ligne.statut">
+                    <option *ngFor="let value of listStatuts" [value]="value">
+                      {{ value }}
+                    </option>
+                  </select>
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <input class="input" type="input" name="designation" [value]="data.ligne.designation">
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <select class="input" name="installation">
+                    <option *ngFor="let value of listInstallations" [value]="value"
+                        [selected]="value === data.ligne.installation">{{ value }}</option>
+                </select>
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <select class="input" name="ouvrage">
+                    <option *ngFor="let value of listOuvrages" [value]="value"
+                        [selected]="value === data.ligne.ouvrage">{{ value }}</option>
+                </select>
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <select class="input" name="responsable">
+                    <option *ngFor="let value of listResponsables" [value]="value"
+                        [selected]="value === data.ligne.responsable">{{ value }}</option>
+                </select>
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <div class="avancementPercent">
+                    <input class="input" type="input" name="avancement" [value]="data.ligne.avancement * 100">
+                </div>
+                <span class="input-border"></span>
+            </div>
+        </div>
+    </div>
+    <div class="descriptif">
+        <div>Descriptif</div>
+        <textarea class="input" type="input" name="inputDescriptif" [(ngModel)]="description">
+            {{ formatDescription(data.ligne.description) }}</textarea>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    </div>
+    <div class="footer">
+        <div class="checkbox">
+            <input type="checkbox" [checked]="data.ligne.impression === 1" class="ui-checkbox"
+                [(ngModel)]="isVisibleOnPrint">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24">
+                    <path
+                        d="M19,6V4a4,4,0,0,0-4-4H9A4,4,0,0,0,5,4V6a5.006,5.006,0,0,0-5,5v5a5.006,5.006,0,0,0,5,5,3,3,0,0,0,3,3h8a3,3,0,0,0,3-3,5.006,5.006,0,0,0,5-5V11A5.006,5.006,0,0,0,19,6ZM7,4A2,2,0,0,1,9,2h6a2,2,0,0,1,2,2V6H7ZM17,21a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V17a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Zm5-5a3,3,0,0,1-3,3V17a3,3,0,0,0-3-3H8a3,3,0,0,0-3,3v2a3,3,0,0,1-3-3V11A3,3,0,0,1,5,8H19a3,3,0,0,1,3,3Z" />
+                    <path d="M18,10H16a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z" />
+                </svg>
+            </span>
+        </div>
+        <button class="params2" (click)="openComplementHistoriqueModal()" style="padding: 0.3em 0.5em;">
+            <div class="checkbox" style="gap: 5px;">
+                <input type="checkbox" class="ui-checkbox" disabled [checked]="hasComplementInfo">
+                <span>Complément(s)</span><i class='bx bx-list-ul'></i>
+            </div>
+        </button>
+        <button class="actions2" (click)="finishTask()"> Terminé <i class='bx bx-check'></i></button>
+    </div>
+    <div class="actionRapports">
+        <button class="params" (click)="openImageModal()">Ajouter image <i class='bx bx-images'></i></button>
+        <button class="actions" (click)="updateLine()"> Enregister <i class='bx bx-save'></i></button>
+    </div>
+</div>

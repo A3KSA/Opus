@@ -1,0 +1,172 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    height: auto;
+    transition: 0.4s;
+    cursor: pointer;
+    margin-bottom: 15px;
+    min-width: 364px;
+  }
+
+  .container:hover {
+    .droite {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    }
+  }
+
+.gauche {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    z-index: 1;
+}
+
+.circular-image {
+    width: 130px; /* Ajustez la taille de l'image selon vos besoins */
+    height: 130px; /* Assurez-vous que la hauteur et la largeur sont égales */
+    border-radius: 50%; /* Ceci rend l'image circulaire */
+    object-fit: cover; /* Pour s'assurer que l'image est bien ajustée à l'intérieur du cercle */
+    border: 3px solid white;
+    margin-left: 90px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  }
+
+.droite {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 80%;
+    padding: 10px 5px 10px 100px;
+    z-index: 0;
+}
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+.action {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 5%;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.entete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1px;
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.titreStep {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.adresseStep {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+button {
+    font-size: 17px;
+    border: 2px solid white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .actions {
+    background-color: #124096;
+    padding: 5px;
+  }
+
+  .actions:hover {
+    background: linear-gradient(90deg, #124096 0%, #4a7ab9 100%);
+  }
+
+  @media screen and (max-width: 1300px) {
+    .circular-image {
+      width: 130px; /* Ajustez la taille de l'image selon vos besoins */
+      height: 130px; /* Assurez-vous que la hauteur et la largeur sont égales */
+    }
+    .titreStep {
+      font-size: 18px;
+    }
+    .adresseStep {
+      font-size: 10px;
+    }
+    .footer{
+      font-size: 11px;
+    }
+  }
+
+  @media screen and (max-width: 1170px) {
+    .container {
+      width: 97%;
+    }
+    .footer {
+      font-size: 14px;
+  }
+  
+  .titreStep {
+      font-size: 22px;
+  }
+  
+  .adresseStep {
+      font-size: 13px;
+  }
+
+  @media screen and (max-width: 500px) {
+    .circular-image {
+      width: 100px; /* Ajustez la taille de l'image selon vos besoins */
+      height: 100px; /* Assurez-vous que la hauteur et la largeur sont égales */
+      margin-left: 70px;
+    }
+    .droite {
+      padding-left: 75px;
+      width: 64%;
+  }
+    .titreStep {
+      font-size: 18px;
+    }
+    .adresseStep {
+      font-size: 10px;
+    }
+    .footer{
+      font-size: 11px;
+    }
+  }
+  }

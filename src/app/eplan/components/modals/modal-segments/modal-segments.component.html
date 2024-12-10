@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="ligne">
+                <div class="designation">{{ data.projectId }}</div>
+                <div class="description">{{ data.projectTitre }}</div>
+            </div>
+            <div class="ligne">
+                <div class="description">Liste des segments</div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div *ngIf="segmentsStructure.length === 0">Liste des segments vide</div>
+        <div class="listSegments" *ngFor="let segment of segmentsStructure">
+            <div class="segment">
+                <div class="abbrev">{{segment.Abbreviation}}</div>
+                <div class="nom">{{segment.Nom}}</div>
+                <div class="action">
+                    <div class="actionBtnDelete" (click)="deleteSegment(segment.PK_Segment)"><i
+                            style="font-size: 24px;" class='bx bx-x'></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rowAction">
+        <div class="designation2"><input type="text" placeholder="Abbrév."
+                [(ngModel)]="abbreviation" #abbreviationInput="ngModel" required></div>
+        <div class="description2"><input type="text" placeholder="Nom"
+                [(ngModel)]="name" #nameInput="ngModel" required></div>
+        <div class="actionNew">
+            <div class="actionBtnAdd" (click)="addSegment(abbreviationInput, nameInput)"><i
+                    style="font-size: 20px;" class='bx bx-list-plus'></i></div>
+        </div>
+    </div>
+</div>

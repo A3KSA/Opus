@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Liste des entités</div>
+            <div class="texte" *ngIf="btnForRapport">Validation des entêtes</div>
+        </div>
+        <div class="actionRapports">
+            <button class="params" *ngIf="!btnForRapport" (click)="openAddEntitee()"> Ajouter une entité <i class='bx bx-add-to-queue'></i></button>
+            <button class="params" *ngIf="btnForRapport" (click)="openGenerateRapport()"> Générer rapport <i class='bx bx-add-to-queue'></i></button>
+        </div>
+    </div>
+    <div class="listentetes">
+        <div class="" *ngIf="listEntetes.length <= 0 ">Aucune entête ajoutée pour l'instant</div>
+        <div class="entete" *ngFor="let entite of listEntetes">
+            <div class="content">
+                <div class="entreprise">
+                    <div class="entite">{{entite.libelleEntite}}</div>
+                    <div class="entreprise">{{entite.entreprise}}</div>
+                </div>
+                <div class="Personne">
+                <div class="responsable">
+                    <div class="nom">{{entite.nomResponsable}} {{entite.prenomResponsable}} ({{entite.initialeResponsable}})</div>
+                </div>
+                <div class="infos">
+                    <div class="poste">{{entite.posteResponsable}}</div>
+                    <div class="adresse">{{entite.emailResponsable}}</div>
+                    <div class="tel">{{entite.telResponsable}}</div>
+                </div>
+            </div>
+            </div>
+            <div class="footer">
+                <div class="checkbox">
+                    <input type="checkbox" class="ui-checkbox" [(ngModel)]="entite.present" (ngModelChange)="updateCheckboxEntete('present', $event, entite.pk_entete)">
+                    <span>P (présent)</span>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" class="ui-checkbox" [(ngModel)]="entite.absent" (ngModelChange)="updateCheckboxEntete('absent', $event, entite.pk_entete)">
+                    <span>A (absent)</span>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" class="ui-checkbox" [(ngModel)]="entite.excuse" (ngModelChange)="updateCheckboxEntete('excuse', $event, entite.pk_entete)">
+                    <span>E (excusé)</span>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" class="ui-checkbox" [(ngModel)]="entite.convoque" (ngModelChange)="updateCheckboxEntete('convoque', $event, entite.pk_entete)">
+                    <span>C (convoqué)</span>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" class="ui-checkbox" [(ngModel)]="entite.distribution" (ngModelChange)="updateCheckboxEntete('distribution', $event, entite.pk_entete)">
+                    <span>D (distribué)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

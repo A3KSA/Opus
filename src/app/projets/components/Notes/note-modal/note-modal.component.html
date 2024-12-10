@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Liste des Notes</div>
+        </div>
+        <div class="actionRapports">
+            <button class="params" (click)="openNewNoteDialog()"> Ajouter une nouvelle note <i
+                    class='bx bx-add-to-queue'></i></button>
+        </div>
+    </div>
+    <div class="listentetes">
+        <div class="listNotes">
+            <div *ngIf="listNotes.length === 0">Aucune note pour le moment.</div>
+            <app-note-item *ngFor="let note of listNotes" [note]="note"
+                (noteDeleted)="handleNoteDeleted($event)"></app-note-item>
+        </div>
+    </div>
+</div>

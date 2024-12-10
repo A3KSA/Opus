@@ -1,0 +1,16 @@
+<div class="note">
+    <div class="header">
+        <div class="titreNote">{{note.Titre}}</div>
+        <div class="actionsExploitant">
+            <button class="actions" (click)="openEditNoteModal();$event.stopPropagation()"> <i class='bx bx-edit'></i></button>
+            <button class="error" (click)="deleteCurrentNote();$event.stopPropagation()"> <i class='bx bx-x'></i></button>
+          </div>
+    </div>
+    <div #content class="contentNote">
+        <div class="text" [innerHTML]="note.Informations"></div>
+    </div>
+    <div class="footer">
+        <div class="date">{{note.Date}}</div>
+        <i class="chevron" [class.up]="isExpanded" (click)="toggleContent(); $event.stopPropagation()"><i class='bx bx-chevron-down bx-tada' ></i></i>
+    </div>
+</div>

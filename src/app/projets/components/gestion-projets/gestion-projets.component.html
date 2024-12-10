@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="entete">
+    <div class="titre">
+      Gestion de projets
+      <div class="titre2" *ngIf="utilisateur">
+        <div>Bienvenue, {{ utilisateur.nom }} {{ utilisateur.prenom }}</div>
+      </div>
+    </div>
+    <div class="actionRapports2" *ngIf="utilisateur && (utilisateur.fk_privilege_EPLAN === 2 || utilisateur.fk_privilege_EPLAN === 3)">
+      <button class="params2" (click)="openEditUsers()"> Gestion utilisateurs <i class='bx bx-group'></i></button>
+    </div>
+    <div class="actionRapports">
+      <button class="params"> Importer projet <i class='bx bx-import'></i></button>
+      <button class="params" (click)="openNewProjetDialog()"> Nouveau <i class='bx bx-folder-plus'></i></button>
+      <button *ngIf="showingFavorites === false" class="actions" (click)="getFavProjects()"> Afficher que les favoris <i
+          class='bx bxs-star'></i></button>
+      <button *ngIf="showingFavorites === true" class="actions" (click)="getAllProjets()"> Afficher tous les projets <i
+          class='bx bxs-star'></i></button>
+    </div>
+  </div>
+  <div class="listeProjets">
+    <div *ngIf="listProjets.length === 0">Aucun projet a afficher pour l'instant.</div>
+    <app-projet-item *ngFor="let projet of listProjets" [projet]="projet" (projectUpdated)="refreshProjectList()"
+      (click)="onCardClick(projet.numero, projet.projet)"></app-projet-item>
+  </div>
+</div>

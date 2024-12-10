@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Liste des compléments</div>
+        </div>
+    </div>
+    <div class="listentetes">
+        <div *ngIf="listComplement.length === 0">Liste actuellement vide.</div>
+        <div class="complementItem" *ngFor="let complement of listComplement">
+            <div class="infosComplement">
+                <div class="contentComplement">{{complement.description}}</div>
+                <div class="enteteComplement">
+                    <div class="userComplement">RCH</div>
+                    <div class="dateComplement">le</div>
+                    <div class="dateComplement">{{formatDateCustom(complement.date)}}</div>
+                </div>
+            </div>
+            <div class="footerComplement">               
+            </div>
+        </div>
+    </div>
+    <div class="actionRapports">
+        <button class="params" (click)="openComplementModal()">Ajouter <i class='bx bx-plus'></i></button>
+    </div>
+</div>

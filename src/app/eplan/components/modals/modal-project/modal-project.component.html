@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="ligne">
+                <div class="designation">Nouveau projet</div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <input class="inputSearch" placeholder="Numéro projet" [(ngModel)]="numProjet">
+        <input class="inputSearch" placeholder="Nom projet" [(ngModel)]="nomProjet">
+        <select class="triSelect" name="triSelect" [(ngModel)]="responsable">
+            <!-- Option par défaut -->
+            <option value="" selected>Responsable</option>
+            <option>Maxime Déforel (MDE)</option>
+            <option>Thomas Genoud (TGE)</option>
+            <option>David Fracheboud (DFR)</option>
+            <option>David Maeder (DMA)</option>
+            <option>Cédric Zillweger (CZI)</option>
+            <option>Thomas Glauser (TGL)</option>
+            <option>Vincent Kowalski (VKO)</option>
+            <option>Xavier Crausaz (XCR)</option>
+            <option>Jean Nicod (JNI)</option>
+            <option>Michel Pochon (MPO)</option>
+            <option>Daniel Berset (DBE)</option>
+            <option>Claude Chassot (CCH)</option>
+            <option>Jérémie Conus (JCO)</option>
+            <option>Ismaël Vuarnoz (IVU)</option>
+            <option>Sébastien Aubonney (SEBA)</option>
+            <option>Xaver Riedo (XRI)</option>
+            <option>Gilbert Kolly (GKO)</option>
+            <option>Alan Decrauzat (ADE)</option>
+            <option>Vincent Dorthe (VIDE)</option>
+        </select>
+        <div class="action">
+            <button class="params" (click)="addProject()"> Enregistrer <i class='bx bx-folder-plus'></i></button>
+        </div>
+    </div>
+</div>

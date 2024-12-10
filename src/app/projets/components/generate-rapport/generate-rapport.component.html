@@ -1,0 +1,90 @@
+<div class="container" *ngIf="popupRapportOrList">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Informations du rapport</div>
+        </div>
+    </div>
+    <div class="listentetes">
+        <div class="titres">
+            <div>Titre du document</div>
+            <div>Intitulé du document</div>
+            <div>N° du document</div>
+            <div>Affaire</div>
+            <div>Localité affaire</div>
+            <div>CFC</div>
+        </div>
+        <div class="forms">
+            <div class="form">
+                <input class="input"  [(ngModel)]="titreProject" required="" type="text">
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <input class="input" [(ngModel)]="procesVerbal" required="" type="text">
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <input class="input" [(ngModel)]= "numeroDocument" required="" type="text">
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <input class="input" [(ngModel)]="data.projectTitre" required="" type="text">
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <input class="input" [(ngModel)]="data.Localite" required="" type="text">
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <input class="input" [(ngModel)]="cfc" required="" type="text">
+                <span class="input-border"></span>
+            </div>
+        </div>
+    </div>
+    <div class="suiteForm">
+        <div class="form-datetime">
+            <div class="date">
+                <label>Date</label>
+                <input type="date" class="input" [(ngModel)]="currentDate" required="">
+            </div>
+            <div class="time">
+                <label>Heure</label>
+                <input type="time" class="input" [(ngModel)]="currentTime" required="">
+            </div>
+        </div>
+    </div>
+    <div class="listentetes">
+        <div class="titres">
+            <div>Lieu de la séance</div>
+        </div>
+        <div class="forms">
+            <div class="form">
+                <input class="input" [(ngModel)]="lieuSeance" required="" type="text">
+                <span class="input-border"></span>
+            </div>
+        </div>
+    </div>
+    <div class="actionRapports">
+        <button class="params" (click)="generateRapport()"> Valider <i class='bx bx-add-to-queue'></i></button>
+    </div>
+</div>
+<div class="container" *ngIf="!popupRapportOrList">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Informations de la liste</div>
+        </div>
+    </div>
+    <div class="listentetes">
+        <div class="titres">
+            <div>Intitulé du document</div>
+        </div>
+        <div class="forms">
+            <div class="form">
+                <input class="input" [(ngModel)]="titreList" required="" type="text">
+                <span class="input-border"></span>
+            </div>
+        </div>
+    </div>
+    <div class="actionRapports">
+        <button class="params" (click)="generateList()"> Valider <i class='bx bx-add-to-queue'></i></button>
+    </div>
+</div>

@@ -1,0 +1,233 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="ligne">
+                <div class="designation">{{ data.CelluleDesignation }}</div>
+                <div class="description">{{ data.CelluleDescription }}</div>
+            </div>
+            <div class="ligne">
+                <div class="designation">{{ data.schema.equipments[0].EquipDesignation }}</div>
+                <div class="description">{{ data.schema.equipments[0].EquipDescription }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <!-- Example for binding the select values to variables -->
+        <div class="propriete">
+            <div class="intitule">Numéro TI:</div>
+            <div class="ti">
+                <div class="2">
+                    <select [(ngModel)]="selectedSegment" id="typeAppareil" (change)="onAbbreviationChange(data.CelluleId, data.schema)">
+                        <option [ngValue]="null" disabled>-</option>
+                        <option *ngFor="let segment of segmentsStructure" [value]="segment.Abbreviation">{{ segment.Abbreviation }}</option>
+                    </select>
+                </div>
+                <div class="ti2">
+                    <div class="type" *ngFor="let equip of data.schema.equipments">
+                        <select [(ngModel)]="equip.EquipCode" (click)="$event.stopPropagation()"
+                          (change)="onTiNumberChange($event, data.CelluleId, data.schema, equip)" data-type="EquipCode">
+                          <option disabled>{{equip.EquipCode}}</option> <!-- Option vide par défaut -->
+                          <option *ngFor="let num of equip.AvailableEquipDesignationNumbers" [value]="num">
+                            {{ num }}
+                          </option>
+                        </select>
+                      </div>
+                </div>
+                <div class="ti2">
+                    <div class="type" *ngFor="let equip of data.schema.equipments">
+                        <select [(ngModel)]="equip.EquipNumero_Ti" (click)="onOldTiNumberFocus(equip);$event.stopPropagation()"
+                          (change)="onTiNumberChange($event, data.CelluleId, data.schema, equip)"  data-type="tiNumber">
+                          <option disabled>{{equip.EquipNumero_Ti}}</option> <!-- Option vide par défaut -->
+                          <option *ngFor="let num of equip.AvailableEquipNumbers" [value]="num">
+                            {{ num }}
+                          </option>
+                        </select>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="propriete">
+            <div class="intitule">Type machine:</div>
+            <div class="ti">
+                <div class="ti1">
+                    <select [(ngModel)]="selectedMachineType" id="typeAppareil">
+                        <option [ngValue]="null" disabled>Pas défini</option>
+                        <option *ngFor="let type of typesMachine" [value]="type.TypeMachineDesignation">{{ type.TypeMachineDesignation }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="propriete">
+                <div class="ti">
+                    <div class="ti1">
+                        <div class="unite">Intensité</div>
+                        <input type="text" [(ngModel)]="intensite" [value]="data.schema.equipments[0].EquipIntensite" [placeholder]="intensite === null ? '-' : ''">
+                        <div class="unite">[ A ]</div>
+                    </div>
+                </div>
+            </div>
+            <div class="propriete">
+                <div class="ti">
+                    <div class="ti1">
+                        <div class="unite">Puissance</div>
+                        <input type="text" [(ngModel)]="puissance" [value]="data.schema.equipments[0].EquipPuissance" [placeholder]="puissance === null ? '-' : ''">
+                        <div class="unite">[ kW ]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="propriete">
+                <div class="intitule">Câble:</div>
+                <div class="ti">
+                    <div class="ti1">
+                        <select [(ngModel)]="selectedCableType" id="typeAppareil">
+                            <option [ngValue]="null" disabled>Pas défini</option>
+                            <option *ngFor="let type of typesCable" [value]="type.TypeCableDesignation  === null ? 'pas défini' : type.TypeCableDesignation">{{ type.TypeCableDesignation }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="propriete">
+                <div class="ti">
+                    <div class="ti1">
+                        <select [(ngModel)]="selectedNbreConnCable" id="typeAppareil">
+                            <option *ngFor="let value of nbreConnCable" [value]="value === null ? 0 : value">{{ value === null ? 0 : value }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="propriete">
+                <div class="intitule">X</div>
+                <div class="ti">
+                    <div class="ti1">
+                        <select [(ngModel)]="selectedCableSection" id="typeAppareil">
+                            <option [ngValue]="null" disabled>Pas défini</option>
+                            <option *ngFor="let section of sectionsCable" [value]="section.SectionCableValeur">{{ section.SectionCableValeur }}</option>
+                        </select>
+                        <div class="unite">[ mm<sup>2</sup>]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="propriete">
+                <div class="ti">
+                    <div class="ti1">
+                        <div class="unite">Plage Mesure TI </div>
+                        <input class="plage" type="text" [(ngModel)]="plageMesure" [value]="data.schema.equipments[0].EquipePlageMesure" [placeholder]="plageMesure === null ? '-' : ''">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="disjoncteurs" *ngIf="selectedMachineType !== 'Mesures' && selectedMachineType !== 'Relai arrêt d\'urgence' && selectedMachineType !== 'Alimentation seule' && selectedMachineType !== 'Alimentation déportée (cellule)'">
+        <div class="propriete">
+            <div class="intitule">Disjoncteur:</div>
+            <div class="ti">
+                <div class="ti1">
+                    <select [(ngModel)]="selectedDisjoncteur" id="typeAppareil">
+                        <option [ngValue]="null" disabled>Pas défini</option>
+                        <option *ngFor="let disjoncteur of disjArticles" [value]="disjoncteur.Nom_Disjoncteur">{{ disjoncteur.Nom_Disjoncteur }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="propriete">
+            <div class="intitule">Auxiliaire 1:</div>
+            <div class="ti">
+                <div class="ti1">
+                    <select [(ngModel)]="selectedAuxiliaire1" id="typeAppareil1">
+                        <option [ngValue]="null" disabled>Pas défini</option>
+                        <option *ngFor="let aux of auxArticles" [value]="aux.Nom_Auxiliaire">{{ aux.Nom_Auxiliaire }}</option>
+                      </select>
+                </div>
+            </div>
+        </div>
+        <div class="propriete">
+            <div class="intitule">Auxiliaire 2:</div>
+            <div class="ti">
+                <div class="ti1">
+                    <select [(ngModel)]="selectedAuxiliaire2" id="typeAppareil2">
+                        <option [ngValue]="null" disabled>Pas défini</option>
+                        <option *ngFor="let aux of auxArticles" [value]="aux.Nom_Auxiliaire">{{ aux.Nom_Auxiliaire }}</option>
+                      </select>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="contacteurs" *ngIf="selectedMachineType !== 'Mesures' && selectedMachineType !== 'Relai arrêt d\'urgence' && selectedMachineType !== 'Alimentation seule' && selectedMachineType !== 'Alimentation déportée (cellule)' && selectedMachineType !== 'Alimentation CPU'">
+            <div class="contacteur">
+                <div class="titre">Contacteur 1</div>
+                <div class="propriete">
+                    <div class="intitule">Disjoncteur:</div>
+                    <div class="ti">
+                        <div class="ti1">
+                            <select [(ngModel)]="selectedContacteur1" id="typeAppareil">
+                                <option [ngValue]="null">Pas défini</option>
+                                <option *ngFor="let contacteur of contactArticles" [value]="contacteur.Nom_Contacteur">{{ contacteur.Nom_Contacteur }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="propriete"  >
+                    <div class="intitule">Auxiliaire 1:</div>
+                    <div class="ti">
+                        <div class="ti1">
+                            <select [(ngModel)]="selectedDisjoncteur" id="typeAppareil">
+                                <option [ngValue]="null">Pas défini</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="propriete">
+                    <div class="intitule">Auxiliaire 2:</div>
+                    <div class="ti">
+                        <div class="ti1">
+                            <select [(ngModel)]="selectedDisjoncteur" id="typeAppareil">
+                                <option [ngValue]="null">Pas défini</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contacteur">
+                <div class="titre">Contacteur 2</div>
+                <div class="propriete">
+                    <div class="intitule">Disjoncteur:</div>
+                    <div class="ti">
+                        <div class="ti1">
+                            <select [(ngModel)]="selectedContacteur2" id="typeAppareil">
+                                <option [ngValue]="null">Pas défini</option>
+                                <option *ngFor="let contacteur of contactArticles" [value]="contacteur.Nom_Contacteur">{{ contacteur.Nom_Contacteur }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="propriete">
+                    <div class="intitule">Auxiliaire 1:</div>
+                    <div class="ti">
+                        <div class="ti1">
+                            <select [(ngModel)]="selectedDisjoncteur" id="typeAppareil">
+                                <option [ngValue]="null">Pas défini</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="propriete">
+                    <div class="intitule">Auxiliaire 2:</div>
+                    <div class="ti">
+                        <div class="ti1">
+                            <select [(ngModel)]="selectedDisjoncteur" id="typeAppareil">
+                                <option [ngValue]="null">Pas défini</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <button class="actionsBtn" (click)="sendData()"> Enregistrer <i class='bx bx-save'></i></button>
+    </div>
+</div>

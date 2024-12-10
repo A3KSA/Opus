@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Ajouter Entête</div>
+        </div>
+    </div>
+    <div class="listentetes">
+        <div class="titres">
+            <div>Entité</div>
+            <div>Entreprise</div>
+            <div>Fonction</div>
+            <div>Nom</div>
+            <div>Prénom</div>
+            <div>Abréviation</div>
+            <div>Courriel</div>
+            <div>Téléphone</div>
+        </div>
+        <div class="forms">
+            <div class="form">
+                <datalist id="libelleEntitesOptions">
+                    <option *ngFor="let value of listLibelleEntites" [value]="value">{{ value }}</option>
+                </datalist>
+                <input class="input" type="text" name="entite" list="libelleEntitesOptions" required/>
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <datalist id="entreprisesOptions">
+                    <option *ngFor="let value of listEntreprises" [value]="value">{{ value }}</option>
+                </datalist>
+                <input class="input" type="text" name="entreprise" list="entreprisesOptions" [(ngModel)]="selectedUser.Entreprise" required/>
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <input class="input" type="input" name="fonction" [(ngModel)]="selectedUser.Poste"/>
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <input class="input" type="input" name="nom" [(ngModel)]="selectedUser.Nom">
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <input class="input" type="input" name="prenom" [(ngModel)]="selectedUser.Prenom">
+                <span class="input-border"></span>
+            </div>
+            <div class="abbrev">
+                <div class="form_abbreviation">
+                    <input class="input" type="input" name="abbreviation" [(ngModel)]="selectedUser.Initiales">
+                    <span class="input-border"></span>
+                </div>
+                <button class="params" (click)="generateAbbreviation()"> Générer</button>
+            </div>
+            
+            <div class="form">
+                <input class="input" type="input" name="courriel" [(ngModel)]="selectedUser.Email">
+                <span class="input-border"></span>
+            </div>
+            <div class="form">
+                <input class="input" type="input" name="telephone" [(ngModel)]="selectedUser.Telephone">
+                <span class="input-border"></span>
+            </div>
+        </div>
+    </div>
+    <div class="actionRapports">
+        <button class="params" (click)="opensearchFonction()"> Rechercher <i class='bx bx-search-alt bx-tada bx-rotate-90'></i></button>
+        <button class="params" (click)="insertNewEntete()"> Valider <i class='bx bxs-add-to-queue bx-rotate-90' ></i></button>
+    </div>
+</div>

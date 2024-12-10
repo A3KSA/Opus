@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="content">
+        <input class="inputSearch" placeholder="Titre de l'article" [(ngModel)]="article.title">
+        <div class="actionLignes2">
+            <select class="inputSearch2" [(ngModel)]="selectedCategorie">
+                <option value="" disabled selected hidden>Titre de l'article</option>
+                <option *ngFor="let option of categories" [ngValue]="option">{{ option.Name }}</option>
+              </select>
+            <button class="actionsBtnNew"> Nouvelle catégorie <i class='bx bx-category'></i></button>
+           <!--<div class="selected-cate">
+                <div class="info" *ngIf="selectedCategories.length <= 0">Aucune catégorie sélectionnée pour l'instant</div>
+                <div *ngFor="let cate of selectedCategories" class="cate">{{ cate }} <i class='bx bx-x'
+                        (click)="removeCategorie(cate)"></i></div>
+            </div>-->
+        </div>
+        <div class="actionLignes">
+            <div class="tag-selector-container">
+                <div (click)="togglePopupTag()" class="selectbox actions"> Ajouter des tags
+                    <div class="chevron">
+                        <i class='bx' [ngClass]="{'bx-chevron-down': !showPopupTag, 'bx-chevron-up': showPopupTag}"></i>
+                    </div>
+                </div>
+                <div class="popup" *ngIf="showPopupTag">
+                    <input type="text" class="inputSearch" (keyup)="onKeyUp($event)" placeholder="Ajouter un tag" />
+                    <span class="littleText">"Enter" pour valider</span>
+                    <div style="padding-top: 10px;">Suggestions</div>
+                    <div class="listTags">
+                        <div *ngFor="let tag of tags" class="tags">
+                            <input type="checkbox" [id]="tag.Name" [value]="tag.Name" (change)="onTagChange($event)"
+                                [checked]="selectedTags.includes(tag.Name)">
+                            <span class="checkmark"></span>
+                            <label [for]="tag.Name">{{ tag.Name }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="selected-tags">
+                <div class="info" *ngIf="selectedTags.length <= 0">Aucun tag sélectionné pour l'instant</div>
+                <div *ngFor="let tag of selectedTags" class="tag">{{ tag }} <i class='bx bx-x'
+                        (click)="removeTag(tag)"></i></div>
+            </div>
+        </div>
+        <div class="ql-container">
+            <quill-editor  [(ngModel)]="article.contentHtml" (onContentChanged)="updateContent($event)" [modules]="editorConfig" theme="snow"></quill-editor>
+        </div>
+    </div>
+    <div class="footer">
+        <button class="actionsBtn" (click)="saveArticle()"> Enregistrer <i class='bx bx-save'></i></button>
+    </div>
+</div>

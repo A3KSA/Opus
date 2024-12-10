@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Ajouter un document</div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="form-group">
+            <input type="text" id="champ1" placeholder="Nom du document" class="form-control inputSearch"
+                [(ngModel)]="Nomdocument">
+            <p class="description-text">Exemple: "Schéma du réseau"</p>
+        </div>
+        <br>
+        <div class="form-group">
+            <textarea type="text" id="champ2" placeholder="Description du document" class="form-control inputSearch"
+                [(ngModel)]="DescriptionDocument"></textarea>
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="text" id="champ3" placeholder="Lien sur le réseau" class="form-control inputSearch"
+                [(ngModel)]="LienDocument">
+            <p class="description-text">Exemple: "P:\STEPS\VUIPPENS\12_RESEAU\NET.pdf"</p>
+        </div>
+        <br>
+        <button class="params" (click)="addDocument()">Ajouter</button>
+    </div>
+</div>

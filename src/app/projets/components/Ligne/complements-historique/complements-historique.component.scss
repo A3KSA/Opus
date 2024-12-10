@@ -1,0 +1,150 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    width: 100%;
+    min-width: 400px;
+  }
+  
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .header .titre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .listentetes {
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0px 10px 0px;
+  }
+
+  button {
+    font-size: 17px;
+    padding: 0.5em 2em;
+    border: 2px solid white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .params {
+    background-color: #1B4965;
+  }
+  
+  .params:hover {
+    background: linear-gradient(90deg, #1B4965 0%, #1B4965 100%);
+  }
+  
+  button:active {
+    transform: translate(0em, 0.2em);
+  }
+  
+  .actionRapports {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .complementItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 10px 10px 10px 10px;
+    border-radius: 8px;
+    border: 2px solid #93a0b3;
+    background-color: #eeeeee;
+  }
+  
+  .footerComplement {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .complementItem .statut {
+    font-size: 12px;
+  }
+  
+  .complementItem svg {
+    width: 20px;
+    fill: #000000;
+    cursor: pointer;
+  }
+  
+  .complementItem svg:hover {
+    width: 20px;
+    fill: #4096ff;
+    cursor: pointer;
+  }
+  
+  .titreComplement {
+    font-weight: 500;
+    padding-bottom: 5px;
+  }
+  
+  .contentComplement {
+    font-size: 15px;
+    font-weight: 400;
+    padding-bottom: 10px;
+  }
+  
+  .infosComplement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: #000000;
+    max-width: 300px;
+  }
+  
+  .dateComplement {
+    font-size: 11px;
+    font-weight: 400;
+    color: #2e2e2e;
+  }
+  
+  .triSelect{    
+    padding: 3px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .enteteComplement {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #2e2e2e;
+  }

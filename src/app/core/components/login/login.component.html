@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="form-container">
+        <div class="logo-container">LOGIN</div>
+  
+        <form class="form" (submit)="onLoginNew(initiales.value)">
+            <div class="form-group">
+              <label for="initiales">Utilisateur</label>
+              <input type="text" id="initiales" #initiales name="initiales" placeholder="Initiales" required>
+            </div>
+          
+            <button class="form-submit-btn" type="submit">Connexion</button>
+          </form>
+          <div class="errorMessage" *ngIf="errorMessage">{{ errorMessage }}</div>
+        <p class="signup-link">Pas de compte ?<a href="#" class="signup-link link"> Contact l'administrateur</a>
+        </p>
+      </div>
+  </div>

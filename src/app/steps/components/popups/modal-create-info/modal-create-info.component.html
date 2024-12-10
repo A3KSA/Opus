@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="header">
+        <div class="titre">
+            <div class="projet">Ajouter une note</div>
+        </div>
+    </div>
+    <div class="content">
+        <input class="inputSearch" placeholder="Titre de la note" [(ngModel)]="titre">
+        <!--<quill-editor [(ngModel)]="editableText" #quillEditor [modules]="quillConfig"></quill-editor>-->
+        <button class="params" (click)="saveContent()"> Sauvegarder <i class='bx bx-save' ></i></button>
+    </div>
+</div>

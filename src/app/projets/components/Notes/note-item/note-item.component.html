@@ -1,0 +1,13 @@
+<div class="note">
+    <div class="entete">
+        <i class='bx bx-note'></i>
+        Note de: <span>{{note.utilisateur}}</span>
+    </div>
+    <div class="content">
+        {{note.note}}
+    </div>
+    <div class="footer">
+        {{note.date}}
+        <button class="btnDeleteNote" (click)="deleteSpecificNote(note.pk_note)"><span><i class='bx bx-x'></i></span></button>
+    </div>
+</div>

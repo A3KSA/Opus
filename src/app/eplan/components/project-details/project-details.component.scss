@@ -1,0 +1,507 @@
+.container {
+    position: relative;
+    /* Ajoutez une position relative pour créer un contexte de positionnement relatif */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    gap: 10px 30px;
+    margin-left: 78px;
+    background-color: #D2E8E3;
+    overflow: hidden;
+    /* Masque tout contenu qui dépasse de la .container */
+}
+
+.container .entete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    background-color: #f7f7f7;
+}
+
+.entete .titre {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.titre .id {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.titre .projet {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.container .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    height: calc(100% - 10% - 5px);
+    /* Taille totale de la page moins la taille de .filtres */
+    overflow-y: auto;
+    /* Activer le défilement vertical si nécessaire */
+    padding-top: 15px;
+    padding-bottom: 120px;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    gap: 2px;
+    width: 70%;
+    padding-left: 10px;
+}
+
+.rowHeader {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 5px 10px 5px;
+    font-weight: 500;
+}
+
+.row,
+.rowEquipment {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 5px 5px 5px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    align-items: center;
+}
+
+.rowAction {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 5px 5px 5px;
+    background-color: #dfefff;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.row2 {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 5px 10px 5px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.rowCell {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 5px 5px 5px;
+    background-color: #ffe4f9;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.rowSchem {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 5px 5px 5px;
+    background-color: #ffede4;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.rowEqui {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 5px 5px 5px;
+    background-color: #e9ffe4;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.designationNew {
+    width: 10%;
+}
+
+.designationNew2 {
+    width: 10%;
+}
+
+.designation {
+    width: 20%;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Ajoute une transition pour un effet fluide */
+}
+
+.designation:hover {
+    transform: scale(1.009); /* Augmente la taille du texte de 20% lors du hover */
+}
+
+.designationTitre {
+    width: 20%;
+}
+
+.designationAction {
+    width: 20%;
+    padding-left: 10px;
+}
+
+.descriptionNew2 {
+    width: 30%;
+}
+
+.description {
+    width: 70%;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Ajoute une transition pour un effet fluide */
+}
+
+.descriptionSchema {
+    width: 50%;
+}
+
+.description:hover {
+    transform: scale(1.005); /* Augmente la taille du texte de 20% lors du hover */
+}
+
+.descriptionTitre {
+    width: 70%;
+}
+
+.pct {
+    width: 15%;
+    padding-left: 10px;
+}
+
+.pct2 {
+    width: 25%;
+}
+
+.descriptionNew {
+    width: 30%;
+}
+
+.type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+.marque {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+.marqueNew {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 34%;
+}
+
+.volet {
+    display: flex;
+    width: 3%;
+    justify-content: center;
+    align-items: center;
+}
+
+.actionNew {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 5px;
+    width: 10%;
+    transition: transform 0.3s ease;
+}
+
+.action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 10%;
+    transition: transform 0.3s ease;
+    gap: 5px;
+}
+
+.actionEquip {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 5%;
+    transition: transform 0.3s ease;
+}
+
+i,
+.action i,
+.actionNew i {
+    font-size: 30px;
+    transition: transform 0.3s ease;
+    color: #383b52;
+}
+
+.rowAction .volet i {
+    font-size: 22px;
+    transition: transform 0.3s ease;
+    color: #383b52;
+}
+
+.actionBtnDelete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    padding: 3px;
+}
+
+.actionBtnDelete i {
+    color: #383b52;
+    transition: color 0.3s ease;
+    /* Transition pour un changement en douceur de la couleur */
+}
+
+.actionBtnDelete:hover {
+    background-color: #ad3939;
+    color: #ffffff;
+    //transform: scale(1.05); /* Optionnel : agrandir un peu l'élément lors du survol */
+}
+
+.actionBtnDelete:hover i {
+    color: #ffffff;
+    /* Change la couleur de l'icône en blanc lors du survol */
+}
+
+.actionBtnAdd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #094e86;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    padding: 5px;
+}
+
+.actionBtnEdit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    padding: 5px;
+}
+
+.actionBtnEdit i {
+    color: #383b52;
+    transition: color 0.3s ease;
+    /* Transition pour un changement en douceur de la couleur */
+}
+
+.actionBtnEdit2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    padding: 5px;
+}
+
+.actionBtnEdit2 i {
+    color: #383b52;
+    transition: color 0.3s ease;
+    /* Transition pour un changement en douceur de la couleur */
+}
+
+.actionBtnAdd i {
+    color: #094e86;
+    transition: color 0.3s ease;
+    /* Transition pour un changement en douceur de la couleur */
+}
+
+.actionBtnAdd:hover,
+.actionBtnEdit:hover {
+    background-color: #094e86;
+    color: #ffffff;
+}
+
+.actionBtnEdit2:hover {
+    background-color: #c7c7c7;
+    color: #ffffff;
+}
+
+.actionBtnAdd:hover i,
+.actionBtnEdit:hover i,
+.actionBtnEdit2:hover i {
+    color: #ffffff;
+    /* Change la couleur de l'icône en blanc lors du survol */
+}
+
+.actionBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e9e9e9;
+    color: #383b52;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    width: 26px;
+}
+
+.actionBtn:hover {
+    transform: scale(1.05);
+    background-color: rgb(45, 85, 131);
+}
+
+.actionBtn:hover i {
+    color: #ffffff;
+    /* Change la couleur de l'icône au survol */
+}
+
+.actionBtn i {
+    font-size: 20px;
+    padding: 3px 5px 3px 5px;
+    color: #383b52;
+}
+
+.cell-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    margin-top: 0;
+    padding: 0;
+    width: 98%;
+}
+
+.cell-list.is-visible {
+    max-height: 10000000px;
+    /* ajustez selon la taille de votre contenu */
+    opacity: 1;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+input {
+    border: none; /* Assurez-vous qu'il n'y a pas de bordure */
+    font-size: 14px;
+    background-color: #f6fbff;
+    padding: 5px 0px 5px 5px;
+    width: 80%;
+    border-radius: 5px;
+    outline: none; /* Supprime la bordure de focus par défaut */
+}
+
+input:focus {
+    border: 1px solid #ffffff; /* Ajustez la bordure lors du focus */
+    outline: none; /* Supprime l'effet de focus du navigateur */
+}
+
+input.editable-input-designation {
+    width: 20%; /* Ajuste la largeur selon le contenu */
+    padding: 5px 0px 5px 5px;
+    background-color: #ffffff;
+  }
+
+  input.editable-input-description {
+    width: 70%; /* Ajuste la largeur selon le contenu */
+    padding: 5px 0px 5px 5px;
+    background-color: #ffffff;
+  }
+
+  input.editable-input-descriptionSchema {
+    width: 50%; /* Ajuste la largeur selon le contenu */
+    padding: 5px 0px 5px 5px;
+    background-color: #ffffff;
+  }
+select {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.actionsBtns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.entete .actionRapports {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.actionRapports i {
+    color: white;
+    font-size: 17px;
+}
+
+button {
+    font-size: 17px;
+    padding: 0.5em 2em;
+    border: 2px solid white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.params {
+    background-color: #4096ff;
+   }
+  
+   .params:hover {
+    background: linear-gradient(90deg, #4096ff 0%, #70b0ff 100%);
+   }
+   
+   button:active {
+    transform: translate(0em, 0.2em);
+   }

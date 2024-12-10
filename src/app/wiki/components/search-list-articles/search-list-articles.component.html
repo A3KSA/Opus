@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="entete">
+        <div class="actionsBtns">
+            <div class="ask">Affiner votre recherche</div>
+          <div class="actionRapports">
+            <!--<button class="actions2"> Nouvel article <i class='bx bx-news bx-tada'></i></button>-->
+            <input class="inputSearch" [(ngModel)]="searchTerm" placeholder="Tapez vos termes de recherche ici">
+            <button class="actions3" (click)="onSearch()"> Rechercher <i class='bx bx-news bx-tada'></i></button>
+          </div>
+        </div>
+      </div>
+    <div class="actionLignes">
+        <div>Filtres supplémentaires: </div>
+        <select class="triSelect" name="triSelect" [(ngModel)]="selectedCategory" (change)="onFilterChange()">
+            <option value="" disabled selected hidden>Catégorie</option>
+            <option *ngFor="let category of allCategories" [value]="category">{{ category }}</option>
+        </select>
+        <select class="triSelect" name="triSelect" [(ngModel)]="selectedAuthor" (change)="onFilterChange()">
+            <option value="" disabled selected hidden>Auteur</option>
+            <option *ngFor="let author of authors" [value]="author">{{ author }}</option>
+        </select>
+        <input class="triDate" type="date" id="startDate" [(ngModel)]="startDate" (change)="onDateChange()">
+        <div class="tag-selector-container">
+            <div (click)="togglePopup()" class="selectbox actions">Tags
+                <div class="chevron">
+                    <i class='bx' [ngClass]="{'bx-chevron-down': !showPopup, 'bx-chevron-up': showPopup}"></i>
+                </div>
+            </div>
+            <div class="popup" *ngIf="showPopup">
+                <div class="listTags">
+                    <div *ngFor="let tag of allTags" class="tags">
+                        <input type="checkbox" [id]="tag.Name" [value]="tag.Name" (change)="onTagChange($event)"
+                            [checked]="selectedTags.includes(tag.Name)">
+                        <span class="checkmark"></span>
+                        <label [for]="tag.Name">{{ tag.Name }}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="Btn">
+            <div class="sign">
+                <svg viewBox="0 0 16 16" class="bi bi-trash3-fill" fill="currentColor" height="18" width="18"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5">
+                    </path>
+                </svg>
+            </div>
+        </button>
+    </div>
+    <div class="contenuRecherche">
+    <div class="latest-articles">
+        <div class="titre">Articles trouvés</div>
+        <div class="listFeaturedArticles">
+            <app-article-item *ngFor="let article of articlesSearch" [article]="article"></app-article-item>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="content">
+            <div class="tagsFooter">
+                <div class="titreFooter">Actions</div>
+                <div class="actionsFooter">
+                    <button class="actions2" (click)="navigateToNouvelArticle()"> Nouvel article <i class='bx bx-news bx-tada'></i></button>
+                </div>
+            </div>
+            <div class="tagsFooter">
+                <div class="titreFooter">Catégories</div>
+                <div class="listTagsfooter">
+                    <div class="cate" *ngFor="let category of allCategories">{{ category }}</div>
+                </div>
+            </div>
+            <div class="tagsFooter">
+                <div class="titreFooter">Tags</div>
+                <div class="listTagsfooter">
+                    <div class="tag" *ngFor="let tag of allTags">{{ tag.Name }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

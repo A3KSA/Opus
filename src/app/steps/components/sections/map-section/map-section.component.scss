@@ -1,0 +1,14 @@
+.contenPrincipal{
+  height: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  }
+
+/* Set the size of the div element that contains the map */
+#map {
+    height: 95%; /* The height is 400 pixels */
+    width: 95%; /* The width is the width of the web page */
+  }
